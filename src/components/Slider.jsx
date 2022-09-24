@@ -34,6 +34,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100px;
     display: flex;
+    transition: all 0.5s ease;
     transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 const Slide = styled.div`
@@ -83,7 +84,7 @@ const Slider = () => {
     };
 
   return (
-    <Container className='total'>
+    <Container className='total3'>
         <Arrow direction="left" className='content_1' onClick={() => handleClick("left")}>
             <i class="fa-solid fa-caret-left"></i>
         </Arrow>
@@ -91,7 +92,7 @@ const Slider = () => {
         <Wrapper className='content_2' slideIndex={slideIndex}>
             {sliderItems.map((item) => (
 
-            <Slide bg={item.bg}>
+            <Slide bg={item.bg} key={item.id}>
                 <ImgContent className='img1'>
                     <Image src={item.img}/>
                 </ImgContent>
