@@ -44,6 +44,9 @@ const Info = styled.div`
 `
 const Product=styled.div``
 
+const ProductName=styled.div``
+const ProductId=styled.div``
+
 
 const Summary = styled.div`
     flex: 1;
