@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
     height: 40vh;
-    background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+    background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@ const Title = styled.h1`
 const Desc = styled.div`
     font-size: 24px;
     font-weight: 300;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 `
 const InputContainer = styled.div`
     width: 50%;

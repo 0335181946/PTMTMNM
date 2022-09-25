@@ -5,7 +5,7 @@ import {sliderItems} from "../data";
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 92vh;
     display: flex;
     position: relative;
     background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
@@ -32,7 +32,7 @@ const Arrow = styled.div`
 `;
 
 const Wrapper = styled.div`
-    height: 100px;
+    /* height: 100px; */
     display: flex;
     transition: all 0.5s ease;
     transform: translateX(${(props) => props.slideIndex * -100}vw);
@@ -46,9 +46,13 @@ const Slide = styled.div`
 const ImgContent = styled.div`
     flex: 1;
     height: 100%;
+    position: relative;
 `;
 const Image = styled.img`
     height: 80%;
+    position: absolute;
+    top: 55px;
+    left: 100px;
 `;
 const InfoContent = styled.div`
     flex: 1;
@@ -64,12 +68,15 @@ const Desc = styled.p`
     font-weight: 500;
     letter-spacing: 3px;
     color: white;
+    line-height: 1.7;
 `;
 const Button = styled.button`
     padding: 10px;
     font-size: 20px;
     background-color: transparent;
     cursor: pointer;
+    color: white;
+    border-color: white;
 `;
 
 const Slider = () => {
