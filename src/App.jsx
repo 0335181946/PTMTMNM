@@ -4,9 +4,11 @@ import ProductList from "./pages/ProductList";
 import Productt from "./pages/Productt";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const App = () => {
-  return <Cart/>;
+  return <Home/>;
 };
 
 export default App;

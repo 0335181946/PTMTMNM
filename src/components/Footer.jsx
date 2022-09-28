@@ -1,8 +1,10 @@
 import styled from "styled-components"
+import {mobile} from "../reponsive";
 
 const Container = styled.div`
     display: flex;
     background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+    ${mobile({flexDirection: "column"})}
 `
 const Left = styled.div`
     flex: 1;
@@ -10,6 +12,7 @@ const Left = styled.div`
     flex-direction: column;
     padding: 20px;
     margin-left: 20px;
+    ${mobile({marginLeft: "0px"})}
 `
 const Logo = styled.h1`
     color: white;
@@ -32,6 +35,7 @@ const Desc = styled.p`
     color: white;
     width: 80%;
     line-height: 1.7;
+    ${mobile({width: "100%"})}
 `
 
 const SocialContainer = styled.div`
@@ -41,6 +45,7 @@ const Center = styled.div`
     flex: 1;
     padding: 20px;
     margin-left: 10px;
+    ${mobile({display: "none"})}
 `
 const Title = styled.h3`
     margin-bottom: 30px;

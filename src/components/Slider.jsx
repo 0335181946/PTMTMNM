@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import React from 'react';
 import { useState } from 'react';
 import {sliderItems} from "../data";
+import {mobile} from "../reponsive";
 
 const Container = styled.div`
     width: 100%;
@@ -10,6 +11,7 @@ const Container = styled.div`
     position: relative;
     background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
     overflow: hidden;
+    ${mobile({display: "none"})}
 `;
 
 const Arrow = styled.div`

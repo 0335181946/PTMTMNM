@@ -30,7 +30,7 @@ export const categories = [
     },
     {
         id: 2,
-        img: "https://znews-photo.zingcdn.me/w660/Uploaded/wobjcak/2022_09_07/messi.jpeg",
+        img: "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/bltf21c2ee30c00121a/627cbc382b67610d5673246f/GettyImages-1347553871.jpg",
         title: "ADIDAS",
     },
     {
