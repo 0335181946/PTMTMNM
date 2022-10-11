@@ -5,14 +5,15 @@ import styled from "styled-components";
 import {mobile} from "../reponsive";
 import {useSelector} from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import  {useState } from "react";
+import {useEffect, useState} from "react";
+import {userRequest} from "../requestMethods";
+import {useNavigate} from "react-router";
 
-
+require ("dotenv").config();
 const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``
-
-
+    
 const Wrapper = styled.div`
     padding: 20px;
     ${mobile({padding: "10px"})}
@@ -134,16 +135,34 @@ const Button = styled.button`
     font-size: 20px;
 `
 
-
-
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
-    const [stripeToken,setStripeToken] = useState(null);
-
-    const onToken = (token) =>{
+    const [stripeToken, setStripeToken] = useState(null);
+    const navigate  = useNavigate();
+    
+    const onToken = (token) => {
         setStripeToken(token);
-    }
+      };
+
     console.log(stripeToken);
+
+    useEffect(() => {
+        const makeRequest = async () =>{
+            try{
+                const res = await userRequest.post("/checkout/payment", {
+                    tokenId: stripeToken.id,
+                    amount: 500,
+                });
+                navigate("/success", { 
+                    // stripeData: res.data,
+                    data: res.data
+                }); 
+            } catch {}
+        }; 
+        stripeToken && makeRequest();
+    }, [stripeToken, cart.total, navigate]);
+
+    
   return (
     <Container>
         <Navbar/>
@@ -163,7 +182,7 @@ const Cart = () => {
                     {cart.products.map((product) => (   
                     <Product>
                         <ProductDetail>
-                            <Image src={product.img}/>
+                            <Image src={product.img} />
                             <Details>
                                 <ProductName><b>Product:</b> {product.title} </ProductName>
                                 <ProductId><b>ID:</b> {product._id}</ProductId>
@@ -178,21 +197,19 @@ const Cart = () => {
                                 <i className="fa-solid fa-plus"></i>
                             </ProductAmountContainer>
                             <ProductPrice>
-                                {product.price * product.quantity}
+                                $ {product.price * product.quantity}
                             </ProductPrice>
                         </PriceDetail>
                     </Product>
                     
                     ))}
                     <Hr/>
-
-                
                 </Info>
                 <Summary>
                     <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                     <SummaryItem>
                         <SummaryItemText>Subtotal</SummaryItemText>
-                        <SummaryItemPrice> {cart.total} vnd</SummaryItemPrice>
+                        <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
                         <SummaryItemText>Thue VAT</SummaryItemText>
@@ -201,18 +218,18 @@ const Cart = () => {
                     <SummaryItem>
                         <SummaryItemText>Phi ship</SummaryItemText>
                         <SummaryItemPrice> 30000vnd</SummaryItemPrice>
-                    </SummaryItem>
+                    </SummaryItem>                      
                     <SummaryItem type="total">
                         <SummaryItemText >Total</SummaryItemText>
-                        <SummaryItemPrice> {cart.total} vnd</SummaryItemPrice>
+                        <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                     </SummaryItem>
                         <StripeCheckout
                             name="TQTFutsal"
                             image="https://play-lh.googleusercontent.com/-hXYZbPHp9jN963E-PNtX0l7wu3mv4RmNqh5i3AbePC41ZobE3EuBkOWl-xQdKmyI8g"
                             billingAddress
                             shippingAddress
-                            description={`tong so tien thanh toan ${cart.total} vnd`}
-                            amount={cart.total*100}
+                            description={`tong so tien thanh toan $${cart.total}`}
+                            amount={cart.total * 100 }
                             token={onToken}
                             stripeKey={KEY}
                         >

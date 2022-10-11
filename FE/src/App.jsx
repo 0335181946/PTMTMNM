@@ -5,6 +5,8 @@ import Productt from "./pages/Productt";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Success from "./pages/Success";
+import {useSelector} from "react-redux";
 
 import {
   BrowserRouter as Router,
@@ -14,12 +16,11 @@ import {
 
 } from "react-router-dom";
 
-
-//Navigate la chuyen huong trang web
+//Navigate su dung chuyen huong trang web
 
 const App = () => {
 
-  const user = true;
+  const user =  useSelector((state) => state.user.currentUser);
   return(
       <Router>
         <Routes>
@@ -27,7 +28,8 @@ const App = () => {
           <Route path="/products/:categories" element={<ProductList/>}/>
           <Route path="/product/:id" element={<Productt/>}/>
           <Route path="/cart" element={<Cart/>}/>
-          <Route path="/login" element={user ? <Navigate to= "/" /> : <Login/>}/>    
+          <Route path="/success" element={<Success/>}/>
+          <Route path="/login" element={ <Login/>}/>    
           <Route path="/register" element={user ? <Navigate to= "/" /> : <Register/>}/>  
         </Routes>
       </Router>

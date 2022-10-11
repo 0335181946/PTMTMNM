@@ -9,10 +9,12 @@ const UserSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        img:{type:String},
     },
     {
         timestamps: true
     },
 );
+
 
 module.exports = mongoose.model("User", UserSchema);
