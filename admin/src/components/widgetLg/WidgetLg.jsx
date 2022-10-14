@@ -37,7 +37,7 @@ export default function WidgetLg() {
           <td className="widgetLgDate">{format(order.createdAt)}</td>
           <td className="widgetLgAmount">$ {order.amount}</td>
           <td className="widgetLgStatus">
-            <Button type={order.status} />
+            <Button type={order.status}/>
           </td>
         </tr>
         ))}

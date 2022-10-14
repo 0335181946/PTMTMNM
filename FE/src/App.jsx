@@ -6,21 +6,20 @@ import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Success from "./pages/Success";
-import {useSelector} from "react-redux";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-
 } from "react-router-dom";
 
 //Navigate su dung chuyen huong trang web
 
 const App = () => {
-
-  const user =  useSelector((state) => state.user.currentUser);
+  const {user} = useContext(Context);
+  // const user =  useSelector((state) => state.user.currentUser);
   return(
       <Router>
         <Routes>
@@ -30,7 +29,7 @@ const App = () => {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/success" element={<Success/>}/>
           <Route path="/login" element={ <Login/>}/>    
-          <Route path="/register" element={user ? <Navigate to= "/" /> : <Register/>}/>  
+          <Route path="/register" element={ <Register/>}/>  
         </Routes>
       </Router>
   );

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import {mobile} from "../reponsive";
+import axios from 'axios';
 
 const Container = styled.div`
     width: 100vw;
@@ -20,7 +21,6 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h1`
-    /* color: white; */
     font-size: 24px;
     font-weight: 300;
 `
@@ -49,21 +49,41 @@ const Button = styled.button`
 
 
 const Register = () => {
+    const [username,setUsername] = useState("");
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const [error,setError] = useState(false);
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        setError(false); 
+        try{
+            const res = await axios.post("http://localhost:5000/api/auth/register",{
+            username,
+            email,
+            password,
+        });
+        res.data && window.location.replace("/login");
+        }catch(err){
+            setError(true); 
+        }
+    };
+
   return (
     <Container>
         <Wrapper>
-            <Title>TAO TAI KHOAN MOI</Title>
-            <Form>
+            <Title>ĐĂNG KÝ TÀI KHOẢN</Title>
+            <Form onSubmit={handleSubmit}>
                 <Input placeholder="name" />
                 <Input placeholder="last name" />
-                <Input placeholder="email" />
-                <Input placeholder="username" />
-                <Input placeholder="password" />
-                <Input placeholder="confirm password" />
-                <Agreement>Bằng cách tạo tài khoản, tôi đồng ý với việc xử lý dữ liệu cá nhân của mình theo chính sách bảo mật va dieu khoan cua cua hang</Agreement>
-                <Button>Xac nhan dang ky</Button>
+                <Input placeholder="email" onChange={e=>setEmail(e.target.value)}/>
+                <Input placeholder="username" onChange={e=>setUsername(e.target.value)}/>
+                <Input type={"password"} placeholder="password" onChange={e=>setPassword(e.target.value)}/>
+                <Input type={"password"} placeholder="confirm password" />
+                <Agreement>Tôi sẽ chịu trách nhiệm về các thông tin đã đăng ký và quy định của cửa hàng</Agreement>
+                <Button type='submit'>Xac nhan dang ky</Button>
+                   {error && <span style={{color:"red", marginTop:"10px"}}>Email hoac Username da ton tai !</span>}
             </Form>
-
         </Wrapper>
     </Container>
   )

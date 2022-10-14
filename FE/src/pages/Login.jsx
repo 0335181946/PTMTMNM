@@ -1,9 +1,12 @@
-import React from 'react'
+
 import styled from 'styled-components'
 import {mobile} from "../reponsive";
 import { useState} from "react";
 import {login} from "../redux/apiCalls";
+import  { Context} from "../context/Context";
 import {useDispatch, useSelector} from "react-redux";
+import { useContext, useRef } from "react";
+import axios from 'axios';
 
 const Container = styled.div`
     width: 100vw;
@@ -57,38 +60,59 @@ const Link = styled.div`
     cursor: pointer;
 `
 const Error = styled.span`
-    color: red;  
+    color: red; 
+`
+const MenuItem = styled.div`
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 25px;
+    ${mobile({fontSize: "12px", marginLeft: "10px"})};
 `
 
 const Login = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const dispatch = useDispatch();
-    const {isFetching, error} =  useSelector((state) => state.user);   
 
-    const handleClick = (e) =>{
-        e.preventDefault();
-        login(dispatch, {username, password})
-    }
+
+    const { error} =  useSelector((state) => state.user);   
+    const userRef = useRef();
+    const passwordRef = useRef();
+    const {dispatch, isFetching} = useContext(Context);
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        dispatch({type:"LOGIN_START"});
+        try{
+            const res = await axios.post("http://localhost:5000/api/auth/login", {
+                username: userRef.current.value,
+                password: passwordRef.current.value,
+            });
+            dispatch({type:"LOGIN_SUCCESS", payload: res.data });
+            window.location.replace("/");
+        }catch(err){
+            dispatch({type:"LOGIN_FAILURE"});
+        }
+    }; 
 
   return (
     <Container>
         <Wrapper>
             <Title>DANG NHAP TAI KHOAN</Title>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Input 
                     placeholder="username"
-                    onChange={(e) => setUsername(e.target.value)}
+                    ref={userRef}
                 />
                 <Input 
                     placeholder="password" 
                     type="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    ref={passwordRef}
                 />
-                <Button onClick={handleClick} disable={isFetching}>DANG NHAP</Button>
-               {error && <Error> Tai khoan hoac mat khau khong dung .....</Error>}
+                <Button type="submit" disable={isFetching}> DANG NHAP</Button>
+                    {error && <Error> Tai khoan hoac mat khau khong dung .....</Error>}
                 <Link>BAN QUEN MAT KHAU ?</Link>
-                <Link>TAO TAI KHOAN MOI</Link>
+                <Button>
+                    <Link className='link' to="http://localhost:3000/register">REGISTER </Link>
+                </Button>
+                
             </Form>
 
         </Wrapper>

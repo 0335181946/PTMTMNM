@@ -1,0 +1,24 @@
+.avatar{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-decoration: none;
+    border: 1px solid gray;
+    margin-left: 20px;
+}
+.avatar span{
+    margin-right:2px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.avatar img{
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+}
+.nav1{
+    font-weight: 600;
+    margin: auto 15px;
+    color:gray;
+}
