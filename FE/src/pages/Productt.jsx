@@ -109,11 +109,7 @@ const Button = styled.button`
         background-color: teal;
         color: white;
     }
-
 `
-
-
-
 const Productt = () => {
 
     const location = useLocation();

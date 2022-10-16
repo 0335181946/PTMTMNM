@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styled from 'styled-components';
 import Product from './Product';
@@ -12,8 +11,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `
-    
-
 const Products = ({cate, filters, sort}) => { 
 
   const [products, setProducts] = useState([]);
@@ -63,7 +60,7 @@ const Products = ({cate, filters, sort}) => {
     <Container>
         { cate ? filteredProducts.map((item) => <Product item={item} key={item.id}/>)
           : products
-          .slice(0, 8)
+          .slice(0, 40)
           .map((item) => <Product item={item} key={item.id}/>)}
         
     </Container>

@@ -70,13 +70,31 @@ router.get("/", async(req, res) =>{
         } else {
             products = await Product.find();
         }
-
-        
         res.status(200).json(products);
     }catch(err){
         res.status(500).json(err)
     }
 });
+
+
+//search
+router.get("/search/:key", async (req, res) =>{
+    try{
+        const result = await Product.find({
+            "$or": [
+                {
+                    title: {$regex: req.params.key}
+                },
+                {
+                    categories: {$regex: req.params.key}
+                }
+            ]
+        });
+       res.status(200).json(result);
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
 
 
 module.exports = router;

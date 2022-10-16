@@ -8,6 +8,8 @@ import News from '../components/News'
 import {mobile} from "../reponsive"
 import { useLocation } from "react-router-dom";
 import  {useState } from "react";
+import { Link } from 'react-router-dom';
+import "./app2.css";
 
 const Container = styled.div``
 
@@ -52,13 +54,15 @@ const ProductList = () => {
     });
   };
 
-  
   return (
         <Container>
             <Navbar/>
             <Announcement/>
             <Title>
-              DANH MỤC GIÀY HÃNG: {cate}
+                THUONG HIEU: 
+                <Link to="/products/nike" className='brand'>NIKE</Link>
+                <Link to="/products/adidas" className='brand'>ADIDAS</Link>
+                <Link to="/products/puma" className='brand'>PUMA</Link>
             </Title>
             <FilterContainer>
                 <Filter>
@@ -71,7 +75,7 @@ const ProductList = () => {
                         <Option>yellow</Option>
                         <Option>blue</Option>
                     </Select>
-                    <Select name="size" onChange={handleFilters}>
+                    <Select  name="size" onChange={handleFilters}>
                         <Option disabled>Size</Option>
                         <Option>37</Option>
                         <Option>38</Option>

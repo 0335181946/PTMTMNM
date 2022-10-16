@@ -1,7 +1,6 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-
+import "./app1.css";
 
 const Info = styled.div`
     opacity: 0;
@@ -20,15 +19,15 @@ const Info = styled.div`
 `
 
 const Container = styled.div`
-    flex: 1 1 400px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
     margin: 5px;
-    /* max-width: 0px; */
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: silver;
-    /* background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%); */
     position: relative;
 
     &:hover ${Info}{
@@ -64,27 +63,29 @@ const Icon = styled.div`
     }
 `
 
-const Product = ({item}) => {
-
-    return (
-      <Container key={item}>
-        <Circle/>
-        <Image src={item.img} />
-        <Info>
+const SearchItem =  ({item}) =>{
+    return(
+        <div className="searchItem">
+            <Container key={item}>
+            <Circle/>
+            <Image src={item.img} />
+            <Info>
             <Icon>
                 <i className="fas fa-shopping-cart"></i>
             </Icon>
             <Icon>
-                <Link to={`/product/${item._id}`}>    
+                    <Link to={`/product/${item._id}`}>
                     <i className="fas fa-search"></i>
                 </Link>
             </Icon>
             <Icon>
                 <i className="far fa-heart"></i>
             </Icon>
-        </Info>
-    </Container>
-  )
+            </Info>
+            </Container>
+
+        </div>
+    )
 }
 
-export default Product;
+export default SearchItem;
