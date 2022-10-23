@@ -1,0 +1,35 @@
+.container{
+    width: 100%;
+}
+
+.total_gt{
+    height: 100vh;
+    width: 80%;
+    background-color: silver;
+    margin: 30px auto;
+}
+
+.total_lh{
+    height: fit-content;
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+.total_lh h1{
+    margin-bottom: 20px;
+    border-bottom: 2px solid gray;
+}
+
+
+.info{
+    display: flex;
+    
+}
+.info_1{
+    width: 50%;
+}
+
+.info_1 img{
+    width: 100%;
+}
