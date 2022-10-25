@@ -50,10 +50,7 @@
     width: 30%;
     padding: 10px;
     margin: 20px auto;
-
 }
-
-
 .content_2{
     margin-top: 20px;
     width: 50%;
@@ -92,6 +89,7 @@
 
 .link{
     width: fit-content;
+    
 }
 .link button{
     border: 0px;
@@ -99,4 +97,50 @@
     padding: 10px;
     color: white;
     cursor: pointer;
+}
+
+.link_login{
+    text-decoration: none;
+}
+
+
+
+.login_4, .login_5{
+    padding: 10px 22px;
+    width: fit-content;
+    background-color: teal;
+    margin-bottom: 15px;
+}
+
+.login_4{
+    padding: 10px 60px;
+}
+
+
+.login_4 a, .login_5 a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    
+}
+.tool{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.product_3{
+    text-transform: uppercase;
+    margin: 15px 0px;
+    font-size: 30px;
+}
+.number{
+    margin: auto 10px;
+    margin-left: 0px;
+    font-size: 22px;
+}
+
+.cod{
+    margin-top: 10px;
 }

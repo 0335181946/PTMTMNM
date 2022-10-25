@@ -20,8 +20,9 @@ const ImgContainer = styled.div`
     flex: 1;
 `
 const Image = styled.img`
-    width: 100%;
-    height: 90vh;
+    width: 500px;
+    height: 500px;
+    float: right;
     object-fit: cover;
     ${mobile({height: "30vh"})}
 `
@@ -35,10 +36,14 @@ const Title = styled.h1`
 `
 const Desc = styled.p`
     margin: 20px 0px;
+    line-height: 30px;
+    width: 95%;
+    font-weight: 500;
 `
 const Price = styled.span`
     font-weight: 100;
-    font-size: 40px;
+    font-size: 30px;
+    color: red;
 `
 
 const FilterContainer = styled.div`
@@ -57,6 +62,7 @@ const Filter = styled.div`
 const FilterTitle = styled.span`
     font-size: 20px;
     font-weight: 200;
+    margin: auto 0px;
 `
 
 const FilterColor = styled.div`
@@ -64,6 +70,7 @@ const FilterColor = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    border: 1px solid gray;
     background-color: ${props => props.color};
     cursor: pointer;
 `
@@ -86,6 +93,7 @@ const AmountContainer = styled.div`
     display: flex;
     align-items: center;
     font-weight: 700;
+    
 `
 
 const Amount = styled.span`
@@ -100,7 +108,8 @@ const Amount = styled.span`
 `
 
 const Button = styled.button`
-    padding: 15px;
+    margin-top: 25px;
+    padding: 10px 15px;
     border: 2px solid teal;
     background-color: white;
     cursor: pointer;
@@ -141,7 +150,7 @@ const Productt = () => {
 
     const handleClick = () =>{
         dispatch(
-            addProduct({ ...product, quantity, color, size })
+            addProduct({ ...product, quantity, color,size })
         );
     };
 
@@ -156,8 +165,8 @@ const Productt = () => {
                 </ImgContainer>
                 <InfoContainer>
                     <Title>{product.title}</Title>
-                    <Desc>{product.desc} </Desc>
-                    <Price>{product.price} vnd</Price>
+                    <div className="product_3" >BRAND: {product.categories}</div>
+                    <Price>GIA: {product.price}$</Price>
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color:</FilterTitle>
@@ -174,18 +183,19 @@ const Productt = () => {
                             </FilterSize>
                         </Filter>
                     </FilterContainer>
-
+                                   
                     <AddContainer>
                         <AmountContainer>
+                            <span className="number">SL: </span>
                             <i className="fa-solid fa-minus" onClick={() =>handleQuantity("dec")}></i>   
                             <Amount>{quantity}</Amount>
                             <i className="fa-solid fa-plus" onClick={() =>handleQuantity("inc")}></i>
                         </AmountContainer>
-                        <Button onClick={handleClick}>ADD TO CART</Button>
                     </AddContainer>
+                    <Button onClick={handleClick}>THEM VAO GIO HANG</Button>
+                    <Desc>{product.desc} </Desc>  
                 </InfoContainer>
             </Wrapper>
-            <News/>
             <Footer/>
         </Container>
   )

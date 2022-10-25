@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 import {mobile} from "../reponsive";
 import { useState} from "react";
@@ -7,6 +6,8 @@ import  { Context} from "../context/Context";
 import {useDispatch, useSelector} from "react-redux";
 import { useContext, useRef } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const Container = styled.div`
     width: 100vw;
@@ -18,7 +19,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 25%;
+    width: 15%;
     padding: 20px;
     background-color: white;
     opacity:0.9;
@@ -28,6 +29,7 @@ const Wrapper = styled.div`
 const Title = styled.h1`
     font-size: 24px;
     font-weight: 300;
+    margin-bottom: 5px;
 `
 const Form = styled.form`
     display: flex;
@@ -42,37 +44,25 @@ const Input = styled.input`
 
 const Button = styled.button`
     background-color: teal;
-    width: 40%;
+    width: fit-content;
     border: none;
-    padding: 15px 20px;
+    padding: 13px 55px;
     color: white;
     cursor: pointer;
-    margin-bottom: 5px;
+
+    margin-bottom: 15px;
     &:disabled{
         color:green;
         cursor: not-allowed;
     }
 `
-const Link = styled.div`
-    margin: 5px 0px;
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-`
 const Error = styled.span`
     color: red; 
 `
-const MenuItem = styled.div`
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 25px;
-    ${mobile({fontSize: "12px", marginLeft: "10px"})};
-`
+
 
 const Login = () => {
-
-
-    const { error} =  useSelector((state) => state.user);   
+    const [error, setError] = useState(false);
     const userRef = useRef();
     const passwordRef = useRef();
     const {dispatch, isFetching} = useContext(Context);
@@ -80,6 +70,7 @@ const Login = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault()
         dispatch({type:"LOGIN_START"});
+        setError(false);
         try{
             const res = await axios.post("http://localhost:5000/api/auth/login", {
                 username: userRef.current.value,
@@ -89,13 +80,14 @@ const Login = () => {
             window.location.replace("/");
         }catch(err){
             dispatch({type:"LOGIN_FAILURE"});
+            setError(true);
         }
     }; 
 
   return (
     <Container>
         <Wrapper>
-            <Title>DANG NHAP TAI KHOAN</Title>
+            <Title>LOGIN</Title>
             <Form onSubmit={handleSubmit}>
                 <Input 
                     placeholder="username"
@@ -106,16 +98,28 @@ const Login = () => {
                     type="password"
                     ref={passwordRef}
                 />
-                <Button type="submit" disable={isFetching}> DANG NHAP</Button>
-                    {error && <Error> Tai khoan hoac mat khau khong dung .....</Error>}
-                <Link>BAN QUEN MAT KHAU ?</Link>
-                <Button>
-                    <Link className='link' to="http://localhost:3000/register">REGISTER </Link>
-                </Button>
+                {error && <span style={{color:"red", marginTop:"10px"}}>Tai khoan hoac mat khau khong dung .....!</span>}
+                <div className='tool'>
+                    <Button type="submit" disabled={isFetching} disable={error}> DANG NHAP</Button>
+                    <div className='login_4'>
+                        <Link to="/register" >REGISTER</Link>
+                    </div>
+                    <div className='login_5'>
+                    <Link >BAN QUEN MAT KHAU ?</Link>
+                    </div>
+                </div>
+                
+                    
+                
+                
+                
+               
                 
             </Form>
 
         </Wrapper>
+
+         
     </Container>
   )
 }

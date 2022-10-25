@@ -13,7 +13,7 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 40%;
+    width: 20%;
     padding: 20px;
     background-color: white;
     opacity:0.9;
@@ -22,11 +22,11 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 600;
 `
 const Form = styled.form`
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 `
 const Input = styled.input`
     flex:1;
@@ -40,9 +40,9 @@ const Agreement = styled.span`
 `
 const Button = styled.button`
     background-color: teal;
-    width: 40%;
+    width: fit-content;
     border: none;
-    padding: 15px 20px;
+    padding: 12px 20px;
     color: white;
     cursor: pointer;
 `

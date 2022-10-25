@@ -86,7 +86,7 @@ const Navbar = () => {
         <Container>
             <Wrapper>
                     <div className='left'>
-                        <span>EN</span>
+                        <span>VN</span>
                         <SearchContainer>
                             <Input placeholder='Search' onChange={(e) => setDestination(e.target.value)} />
                             <button onClick={handleSearch}>

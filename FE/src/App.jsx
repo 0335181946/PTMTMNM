@@ -21,10 +21,21 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { calculateTotal } from "./redux/cartRedux";
 
 //Navigate su dung chuyen huong trang web
 const App = () => {
   const {user} = useContext(Context);
+  const {products } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  
+  useEffect(() =>{
+    dispatch(calculateTotal());
+  }, [products]);
+
+
   return(
       <Router>
         <Routes>
