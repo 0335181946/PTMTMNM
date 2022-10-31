@@ -4,7 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Features = require("../utils/Features");
 
 
-//create product
+//create product-- for admin
 exports.createProduct = catchAsyncErrors(  async (req,res,next) =>{
     const product = await Product.create(req.body);
 
@@ -14,15 +14,45 @@ exports.createProduct = catchAsyncErrors(  async (req,res,next) =>{
     });  
 });
 
+//get all product -- admin
+// exports.getAllProductsadmin = catchAsyncErrors ( async (req,res, next) =>{
+//     const resultPerPage = 8;
+//     const productsCount = await Product.countDocuments();
+
+//     const feature = new Features(Product.find(), req.query)
+//     .search()
+//     .filter()
+//     .pagination(resultPerPage)
+//     ;
+//     const products = await feature.query;
+
+//     res.status(200).json({
+//         success: true,
+//         products,
+//         productsCount,
+//         resultPerPage,
+//     })
+// });
+
+
 //get all product
-exports.getAllProducts = catchAsyncErrors ( async (req,res, next) =>{
-    const feature = new Features(Product.find(), req.query).search().filter();
-    const products = await feature.query;
+exports.getAllProducts = catchAsyncErrors ( async (req,res) =>{
+    const resultPerPage  = 8;
+    const productsCount = await Product.countDocuments();
+
+    const feature = new Features(Product.find(), req.query)
+    .search()
+    .filter()
+    .pagination(resultPerPage)
+    ;
+    const product = await feature.query;
 
     res.status(200).json({
         success: true,
-        products
-    })
+        product,
+        productsCount,
+    
+    });
 });
 
 //update product
@@ -66,7 +96,8 @@ exports.getSingleProduct = catchAsyncErrors( async (req, res,next) =>{
     }
     res.status(200).json({
         success: true,
-        product
+        product,
+        productCount
     })
 });
 
