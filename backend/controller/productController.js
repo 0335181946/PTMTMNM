@@ -15,24 +15,14 @@ exports.createProduct = catchAsyncErrors(  async (req,res,next) =>{
 });
 
 //get all product -- admin
-// exports.getAllProductsadmin = catchAsyncErrors ( async (req,res, next) =>{
-//     const resultPerPage = 8;
-//     const productsCount = await Product.countDocuments();
+exports.getAdminAllProducts = catchAsyncErrors ( async (req,res, next) =>{
+    const products = await Product.find();
 
-//     const feature = new Features(Product.find(), req.query)
-//     .search()
-//     .filter()
-//     .pagination(resultPerPage)
-//     ;
-//     const products = await feature.query;
-
-//     res.status(200).json({
-//         success: true,
-//         products,
-//         productsCount,
-//         resultPerPage,
-//     })
-// });
+    res.status(200).json({
+        success: true,
+        products,
+    });
+});
 
 
 //get all product
@@ -100,4 +90,6 @@ exports.getSingleProduct = catchAsyncErrors( async (req, res,next) =>{
         productCount
     })
 });
+
+
 

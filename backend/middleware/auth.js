@@ -10,7 +10,7 @@ exports.isAuthenUser = catchAsyncErrors(async (req,res,next) =>{
         return next(new errorHandle("please login before",401));
     }
 
- //ma hoa
+    //ma hoa
     const decodedData = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = await User.findById(decodedData.id);
     next();

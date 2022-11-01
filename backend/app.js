@@ -9,9 +9,11 @@ app.use(cookieParser());
 //router import
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute.js")
+const order = require("./routes/orderRoute.js")
 
 app.use("/api/v2", product);
 app.use("/api/v2", user);
+app.use("/api/v2", order);
 app.use(errorHandler);
 
 

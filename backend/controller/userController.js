@@ -3,6 +3,7 @@ const errorHandler = require("../utils/ErrorHandler.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
 const sendMail = require("../utils/sendMail.js");
+const crypto = require("crypto")
 
 //register
 exports.createUser = catchAsyncErrors(async (req,res,next) =>{
@@ -62,14 +63,14 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) =>{
         return next(new errorHandler("user not found with this email", 404));
     }
 
-    //get resetpass token
+            //get resetpass token
     const resetToken = user.getResetToken();
     await user.save({
         validateBeforeSave: false
     });
 
     const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
-    const message = `your password reset token is: - \n \n ${resetPasswordUrl}`;
+    const message = `your password reset token is:  \n \n ${resetPasswordUrl}`;
 
     try{
 
@@ -94,6 +95,143 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) =>{
 
         return next(new errorHandler(error.message))
     }
-})
+});
 
+
+//reset password
+exports.resetPassword = catchAsyncErrors(async(req, res, next) =>{
+
+    //create token hash
+    const  resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
+    const user = await User.findOne({
+        resetPasswordToken,
+        resetPasswordTime: { $gt: Date.now()},
+    });
+
+    if(!user){
+        return next(new errorHandler("reset password url is invalid or has been expired",400));
+    }
+
+    if(req.body.password !== req.body.confirmPassword){
+        return next(new errorHandler("password is not match",400));
+    }
+
+    user.password =req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordTime = undefined;
+
+    await user.save();
+    sendToken(user,200,res);
+
+});
+
+//get user detail info
+exports.userDetails = catchAsyncErrors(async(req,res,next) =>{
+    const user = await User.findById(req.user.id);
+    res.status(200).json({
+        success:true,
+        user,
+    });
+});
+
+
+//update password user
+exports.updatePassword = catchAsyncErrors(async(req,res,next) =>{
+    const user = await User.findById(req.user.id).select("+password");
+    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+    if(!isPasswordMatched){
+        return next(
+            new errorHandler("old password is incrorrect", 400));
+    };
+    if(req.body.newPassword !== req.body.confirmPassword){
+        return next(
+            new errorHandler("password not match with each orther", 400)
+        );
+    }
+    user.password = req.body.newPassword;
+    await user.save();
+
+    sendToken(user,200, res);
+});
+
+//update profile user
+exports.updateProfile = catchAsyncErrors( async(req,res,next) =>{
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+    };
+    //we add cloud letter then we are giving condition for the avatar
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success:true,
+    })
+});
+
+//get all user - admin
+exports.getAllUsers = catchAsyncErrors(async(req,res,next) =>{
+    const users = await User.find();
+
+    res.status(200).json({
+        success: true,
+        users,
+    });
+});
+
+//get single user detail - admin
+exports.getSingleUser = catchAsyncErrors(async(req,res,next) =>{
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return next(new errorHandler("user not found with this id", 400));
+    }
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
+
+
+//chang user role - admin
+exports.updateRole = catchAsyncErrors( async(req,res,next) =>{
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role,
+    };
+    //we add cloud letter then we are giving condition for the avatar
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success:true,
+        user
+    })
+});
+
+//delete user - admin
+exports.deleteUser = catchAsyncErrors( async(req,res,next) =>{
+    
+    //we remove cloud letter then we are giving condition for the avatar
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return next(new errorHandler("user is not found with this id ", 400));
+    }
+    await user.remove();
+
+    res.status(200).json({
+        success:true,
+        message: "user delete success"
+    })
+});
 
