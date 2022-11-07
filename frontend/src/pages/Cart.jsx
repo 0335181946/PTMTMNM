@@ -1,19 +1,20 @@
 import React from 'react'
+import CartItems from '../components/CartItems'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 const Cart = () => {
   return (
     <div className='wrapper'>
-        <div className='header'>
-            <Header/>
-        </div>
-        <div>
-            cart
-        </div>
-        <div className='footer'>
-            <Footer/>
-        </div>
+      <header className='header'>
+        <Header />
+      </header>
+      <main className='main'>
+        <CartItems/>
+      </main>
+      <footer className='footer'>
+        <Footer />
+      </footer>
     </div>
   )
 }

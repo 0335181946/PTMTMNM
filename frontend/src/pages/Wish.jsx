@@ -1,19 +1,20 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import WishList from '../components/WishList'
 
 const Wish = () => {
   return (
     <div className='wrapper'>
-        <div className='header'>
-            <Header/>
-        </div>
-        <div>
-            wish
-        </div>
-        <div className='footer'>
-            <Footer/>
-        </div>
+      <header className='header'>
+        <Header />
+      </header>
+      <main className='main'>
+        <WishList />
+      </main>
+      <footer className='footer'>
+        <Footer />
+      </footer>
     </div>
   )
 }

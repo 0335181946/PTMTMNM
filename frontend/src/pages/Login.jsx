@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Signin from '../components/Signin'
 
 const Login = () => {
   return (
@@ -9,7 +10,7 @@ const Login = () => {
             <Header/>
         </header>
         <main>
-           login
+           <Signin/>
         </main>
         <footer className='footer'>
             <Footer/>

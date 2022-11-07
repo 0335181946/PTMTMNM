@@ -264,6 +264,8 @@
     text-align: center;
     margin: 70px 0px 30px 0px;
 }
+
+.wish_groups,
 .productS_groups{
     display: flex;
     flex-wrap: wrap;
@@ -363,4 +365,226 @@
 
 .footer_copyRight span{
     font-size: 12px;
+}
+
+
+/*LOGIN*/
+.sign_row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign_form{
+    width: 500px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.sign_title{
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+.sign_form1{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.sign_label{
+    margin-bottom: 5px;
+}
+.sign_input{
+    height: 40px;
+    outline: none;
+}
+.sign_btn_login{
+    padding: 10px 15px;
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    background-color: black;
+    box-shadow: 0 0 4px #00000060;
+    color: white;
+    border: none;
+    letter-spacing: 2px;
+}
+.sign_btn_login:hover{
+    background-color: white;
+    color:black;
+}
+
+.signOther{
+    margin: 10px 0;
+    text-align: center;
+}
+.signOther a{
+    font-size: 14px;
+    color: black;
+    position: relative;
+}
+
+.signOther a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.1);
+}
+
+.signOther a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/*shop*/
+.wish_container,.shop_container{
+    padding: 50px 0px;
+}
+
+.wish_title,
+.shop_title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.shop_row:last-child{
+    display: flex;
+}
+.shop_col:first-child{
+    flex: 1;
+}
+.shop_col:last-child{
+    flex: 3;
+}
+
+.filter_group{
+    margin-top: 40px;
+}
+
+.filter_groupTitle{
+    font-size: 14px;
+}
+
+/*filter*/
+.filter_div{
+    margin-top: 15px;
+}
+.filter_buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.filter_btn{
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 4px black;
+    border: none;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.filter_btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.filter_input{
+    height: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 80%;
+    padding: 0 10px 5px 10px;
+}
+
+.filter_checkbox{
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid silver;
+}
+
+.filter_check{
+     cursor: pointer;
+     width: 20px;
+     height: 20px;
+     filter: invert(0%) sepia(7%) saturate(0%) hue-rotate(81deg) brightness(102%) contrast(107%);
+}
+
+.filter_label{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rc-slider-handle{
+    border-color: black !important;
+}
+
+.rc-slider-track {
+    background-color: black !important;
+}
+
+.rc-slider-dot-active{
+    border-color: black !important;
+}
+
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+    box-shadow: 0 0 0 2px black !important;
+}
+
+.shopP_row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+
+.wish_button{
+    background: transparent;
+    border: none;
+    padding: 10px 0px;
+    width: 100%;
+}
+.cart_button{
+    background: transparent;
+    border: none;
+    padding: 10px 0px;
+}
+
+.wish_span{
+    color: red;
+}
+
+.cart_row{
+    display: flex;
+    marker-start: 40px;
+}
+
+.cart_col:first-child{
+    flex: 3;
+}
+.cart_col:last-child{
+    flex: 1;
+}
+
+.cart_otherDiv{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cart_minus, .cart_plus{
+    padding: 2px 5px;
+    font-size: 20px;
+    font-weight: bold;
 }

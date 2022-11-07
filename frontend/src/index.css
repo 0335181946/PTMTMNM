@@ -13,8 +13,14 @@ a{
 ul{
   list-style: none;
 }
+
+input{
+  font-family: Roboto-Regular;
+}
+
 button{
   cursor: pointer;
+  font-family: Roboto-Regular;
 }
 .wrapper{
     min-height: 100vh;

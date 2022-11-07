@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NewProduct = () => {
+const WishListItem = () => {
     return (
         <div className='product_group'>
             <Link to="/product">
@@ -12,17 +12,14 @@ const NewProduct = () => {
                     <div className='product_divTop'>
                         <span className='product_category'>Nike</span>
                         <h3 className='product_title'>Mercurial</h3>
-                        <div>
-                            <span className='product_price'>400d</span>
-                        </div>
-
                     </div>
-
                 </div>
             </Link>
-
+            <button className='wish_button'>
+                <span className='wish_span'>DELETE</span>
+            </button>
         </div>
     )
 }
 
-export default NewProduct
+export default WishListItem
