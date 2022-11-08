@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import ProductDetails from '../components/ProductDetails'
 
 const Product = () => {
   return (
@@ -9,7 +10,7 @@ const Product = () => {
             <Header/>
         </div>
         <div>
-            product
+            <ProductDetails/>
         </div>
         <div className='footer'>
             <Footer/>

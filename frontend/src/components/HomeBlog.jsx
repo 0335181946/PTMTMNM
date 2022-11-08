@@ -15,10 +15,6 @@ const HomeBlog = () => {
                             <HomeBlogItem/>
                             <HomeBlogItem/>
                             <HomeBlogItem/>
-                            <HomeBlogItem/>
-                            <HomeBlogItem/>
-                            <HomeBlogItem/>
-                            <HomeBlogItem/>
                         </div>   
                     </div>
                 </div>

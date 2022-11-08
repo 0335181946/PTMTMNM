@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-const HomeBlogItem = () => {
+const BlogListItem = () => {
     return (
         <div className='hb_blog'>
-            <Link to="/blog:345347583459345">
+            <Link to="/blog:84351247825">
                 <h3 className='hb_blogTitle'>title one</h3>
                 <p className='hb_desc'>fklsghhdf glfg jmhnfjlh</p>
                 <div className='hb_blogFooter'>
@@ -17,4 +17,4 @@ const HomeBlogItem = () => {
     )
 }
 
-export default HomeBlogItem
+export default BlogListItem

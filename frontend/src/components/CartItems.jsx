@@ -17,7 +17,38 @@ const CartItems = () => {
                     </div>
                 </div>
                 <div className='cart_col'>
-                    right
+                    <div className='cart_bill'>
+                        <h2 className='bill_title'>My bill</h2>
+                        <div className='bill_groups'>
+                            <div className='bill_group'>
+                                <span>Product 1</span>
+                                <span>$400</span>
+                            </div>
+                            <div className='bill_group'>
+                                <span>Product 1</span>
+                                <span>$400</span>
+                            </div>
+
+                        </div>
+                        <div className='bill_total'>
+                            <div className='bill_group'>
+                                <span>Subtotal</span>
+                                <span>$400</span>
+                            </div>
+                            <div className='bill_group'>
+                                <span>TAX 20%</span>
+                                <span>$4</span>
+                            </div>
+                            <div className='bill_group'>
+                                <span>TOTAL</span>
+                                <span>$404</span>
+                            </div>
+                        </div>
+                        <div className='bill_btn'>
+                            <button>CHECK OUT</button>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
