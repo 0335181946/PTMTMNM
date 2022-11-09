@@ -779,3 +779,60 @@
     color: white;
 }
 
+.pd_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.pd_buttons button{
+    padding: 10px 15px;
+    transition: all 0.5s;
+    border: none;
+    box-shadow: 0 0 3px black;
+}
+.pd_buttons .pd_wish{
+    background-color: white;
+}
+.pd_buttons .pd_wish:hover{
+    background-color: teal;
+}
+
+.pd_buttons .pd_cart{
+    background-color: white;
+}
+.pd_buttons .pd_cart:hover{
+    background-color: teal;
+}
+
+.pd_quantity{
+    font-size: 14px;
+}
+.pd_quantityNumber{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pd_imgMain{
+   width: 60%; 
+   height: auto;
+   display: block;
+   margin: 0 auto;
+}
+.pd_top{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pd_bottom{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pd_imgBot{
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+}
