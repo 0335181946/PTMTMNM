@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const ProductDetails = () => {
 
@@ -12,12 +11,7 @@ const ProductDetails = () => {
                 <div className='pd_col'>
                     <div className='pd_imageDiv'>
                         <div className='pd_top'>
-                            <TransformWrapper>
-                                <TransformComponent>
-                                <img src={selectImg || 'https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg'} className='pd_imgMain' alt="" />
-                                </TransformComponent>
-                            </TransformWrapper>
-                            
+                            <img src={selectImg || 'https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg'} className='pd_imgMain' alt="" />
                         </div>
                         <div className='pd_bottom'>
                             <img src="https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg" className='pd_imgBot' onClick={() => setSelectedImg('https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg')} alt="" />
@@ -82,6 +76,10 @@ const ProductDetails = () => {
                                     </div>
                                 </div> */}
                             </div>
+                        </div>
+
+                        <div className='pd_group'>
+                            <p className='pd_price'>Price: 400</p>
                         </div>
 
                         <div className='pd_group'>

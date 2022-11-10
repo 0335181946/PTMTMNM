@@ -59,14 +59,17 @@
 }
 
 .menu_item li a,
-.menu_item_2 li a {
+.menu_item_2 li a,
+.menu_item_2 li span {
     position: relative;
     font-weight: bold;
     color: teal;
+    cursor: pointer;
 }
 
 .menu_item li a::after,
-.menu_item_2 li a::after {
+.menu_item_2 li a::after,
+.menu_item_2 li span::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -80,7 +83,8 @@
 }
 
 .menu_item li a:hover::after,
-.menu_item_2 li a:hover::after {
+.menu_item_2 li a:hover::after,
+.menu_item_2 li span:hover::after  {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
@@ -835,4 +839,132 @@
     width: 150px;
     height: auto;
     cursor: pointer;
+}
+
+.check_container{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: #0000001e;
+}
+
+.check_title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.check_container form{
+    width: 500px;
+    background-color: #ffffff;
+    padding: 30px 10px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.check_container form .form_group{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.check_container form .form_group label{
+    margin-bottom: 5px;
+}
+
+.check_container form .form_group input{
+   height: 40px;
+   border: 1px solid #2f5f74;
+   padding: 5px 15px;
+   outline: none;
+   color: #ca2734;
+}
+
+.close_form{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -15px;
+    top: -15px;
+    width: 35px;
+    height: 35px;
+    background-color: #ca2734;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.check_btn button{
+    background-color: #000000;
+    color: white;
+    padding: 5px 15px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 3px black;
+    transition: all 0.5s;
+}
+
+.check_btn button:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+.no_data{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.filter-pagination{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.filter-pagination li{
+    cursor: pointer;
+    border: 1px solid #00000060;
+    margin-left: 5px;
+}
+
+.filter-pagination li a{
+    padding: 5px 15px;
+}
+
+
+.filter-pagination li:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.pagi-active{
+    background-color: #000000;
+}
+.pagi-active-link{
+    color: white;
+}
+
+.disabledPagi{
+    cursor: not-allowed !important;
+    background-color: #bbbbbb;
+    color:black;
+}
+
+.pd_group .pd_price{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: 20px;
 }

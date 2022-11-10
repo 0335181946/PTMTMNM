@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const HomeBlogItem = () => {
+const HomeBlogItem = ({blog}) => {
     return (
         <div className='hb_blog'>
-            <Link to="/blog:345347583459345">
-                <h3 className='hb_blogTitle'>title one</h3>
-                <p className='hb_desc'>fklsghhdf glfg jmhnfjlh</p>
+            <Link to={`/blogs/${blog._id}`}>
+                <h3 className='hb_blogTitle'>{blog.title}</h3>
+                <p className='hb_desc'>{blog.description}</p>
                 <div className='hb_blogFooter'>
-                    <span>admin</span>
-                    <span>23.08.2022</span>
+                    <span>{blog.author}</span>
+                    <span>{blog.createdAt.slice(0,10)}</span>
                 </div>
             </Link>
 

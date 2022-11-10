@@ -55,7 +55,7 @@ const CartItems = () => {
                     </div>
                 </div>
             </div>
-            {open && <Checkout/>}
+            {open && <Checkout setOpen={setOpen} />}
         </div>
     )
 }
