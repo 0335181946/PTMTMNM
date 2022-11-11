@@ -1,27 +1,22 @@
 import React from 'react'
 import Category from './filterPart/Category'
-import Search from './filterPart/Search'
 import Subcategory from './filterPart/Subcategory'
 import Price from './filterPart/Price'
 
-const ShopFilter = () => {
+const ShopFilter = ({filterResult, category, subCategory, changeChecked, selectedPrice, changePrice}) => {
     return (
         <>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>Search by name</span>
-                <Search />
-            </div>
-            <div className='filter_group'>
                 <span className='filter_groupTitle'>category</span>
-                <Category />
+                <Category filterResult={filterResult} category={category}/>
             </div>
             <div className='filter_group'>
                 <span className='filter_groupTitle'>subCategory</span>
-                <Subcategory />
+                <Subcategory subCategory={subCategory} changeChecked={changeChecked}/>
             </div>
             <div className='filter_group'>
                 <span className='filter_groupTitle'>Price</span>
-                <Price />
+                <Price value={selectedPrice} changePrice={changePrice}/>
             </div>
 
         </>

@@ -15,7 +15,6 @@ const NewProducts = () => {
         fetchData();
     }, []);
 
-
     return (
         <div className='productS_container'>
             <div className='productS_row'>

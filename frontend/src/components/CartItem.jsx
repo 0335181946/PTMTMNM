@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CartItem = () => {
+const CartItem = ({item, removeItemHandler, updateCartHandler}) => {
     return (
         <div className='product_group'>
-            <Link to="/product:11434563488435">
+            <Link to={`/products/${item._id}`}>
                 <div className='product_body'>
-                    <img className='product_img' src="https://product.hstatic.net/200000278317/product/-banh-nike-zoom-mercurial-superfly-9-academy-tf-dj5629-780-vang-hong-1_4e5cadae556240b482d76a7cba5d7b42_master.jpg" alt="" />
+                    <img className='product_img' src={item.image} alt={item.title} />
                 </div>
                 <div className='product_footer'>
                     <div className='product_divTop'>
-                        <span className='product_category'>Nike</span>
-                        <h3 className='product_title'>Mercurial</h3>
+                        <span className='product_category'>{item.category}</span>
+                        <h3 className='product_title'>{item.title}</h3>
+                        <span className='product_size'>Size: {item.size}</span>
+                        <span className='product_price'>${(item.price)?.toFixed(3)}</span>
                     </div>
                 </div>
             </Link>
             <div className='cart_otherDiv'>
                 <div className='cart_quantityDiv'>
-                    <button className='cart_minus'>-</button>
-                    <span className='cart_quantity'>1</span>
-                    <button className='cart_plus'>+</button>
+                    <button className='cart_minus' onClick={() => updateCartHandler(item, item.quantity -1)} disabled={item.quantity === 1}>-</button>
+                    <span className='cart_quantity'>{item.quantity}</span>
+                    <button className='cart_plus' onClick={() => updateCartHandler(item, item.quantity +1)}>+</button>
                 </div>
-                <button className='cart_button'>
-                    <span className='wish_span'>DELETE</span>
-                </button>
+                <button className='cart_button' onClick={() => removeItemHandler(item)}><span className='wish_span'>DELETE</span></button>
             </div>
 
         </div>

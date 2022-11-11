@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 const BlogList = () => {
 
     const [blogs, setBlogs] = useState([]);
+    
     const [pageNumber, setPageNumber] = useState(0);
     const blogsPerPage = 6;
     const pagesVisited = pageNumber * blogsPerPage;

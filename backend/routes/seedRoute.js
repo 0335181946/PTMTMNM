@@ -3,6 +3,8 @@ import data from '../data.js';
 import User from '../models/userModel.js';
 import Blog from '../models/blogModel.js';
 import Product from '../models/productModel.js';
+import Category from '../models/categoryModel.js';
+import Subcategory from '../models/subcategoryModel.js';
 
 const seedRouter = express.Router();
 
@@ -20,8 +22,18 @@ seedRouter.get('/', async(req,res) =>{
     await Product.remove({});
     const createdProduct = await Product.insertMany(data.products);
 
+     //seed for products
+     await Category.remove({});
+     const createdCategory = await Category.insertMany(data.category);
 
-    res.send({createdUser, createdBlog, createdProduct});
+      //seed for products
+    await Subcategory.remove({});
+    const createdSubcategory = await Subcategory.insertMany(data.subcategory);
+
+    
+
+
+    res.send({createdUser, createdBlog, createdProduct,createdCategory,createdSubcategory });
 });
 
 export default seedRouter;

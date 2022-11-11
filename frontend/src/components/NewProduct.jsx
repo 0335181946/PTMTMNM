@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NewProduct = ({product}) => {
     return (
         <div className='product_group'>
-            <Link to="/product/:7346573458348">
+            <Link to={`/products/${product._id}`}>
                 <div className='product_body'>
                     <img className='product_img' src={product.image} alt={product.title} />
                 </div>

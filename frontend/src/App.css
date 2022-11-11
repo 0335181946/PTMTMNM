@@ -564,15 +564,13 @@
     box-shadow: 0 0 0 2px black !important;
 }
 
-.shopP_row {
+.shopP_groups {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 30px;
 }
-
-
 
 .wish_button {
     background: transparent;
@@ -967,4 +965,67 @@
     margin-top: 40px;
     font-weight: bold;
     font-size: 20px;
+}
+
+.empty_title{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.wish_no_product{
+    text-align: center;
+    color: #00000060;
+    margin-top: 100px;
+}
+.cart_no_product{
+    text-align: center;
+    margin-top: 100px;
+    color: #00000060;
+    font-size: 30px;
+}
+.myOrder_row.myorder{
+    display: flex;
+    margin-top: 100px;
+    
+}
+
+.myOrder_row .my_col:first-child{
+    flex: 2;
+}
+
+.myOrder_row .my_col:last-child{
+    flex: 1;
+}
+
+.myorderTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.go_back{
+    position: relative;
+    color: black
+}
+
+.go_back::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.1);
+}
+
+.go_back:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.mf{
+    margin-top: 30px;
 }

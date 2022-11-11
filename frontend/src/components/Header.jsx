@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "../App.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Store } from '../Store';
 
 
 const Header = () => {
+
   const navigate = useNavigate();
 
+  const { state } = useContext(Store);
+  const { cart, wish } = state;
+
+  const cartItemsLength = cart.cartItems.reduce((a, c) => a + c.quantity, 0);
+
+
   const userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
-  const logoutHandler = () =>{
+  const logoutHandler = () => {
     localStorage.removeItem('userInfo');
     toast.success('you have success log out!');
     navigate('/login');
@@ -50,19 +58,20 @@ const Header = () => {
                   <li><Link to="/wish" className='menu_link_2'>
                     <div className='menu_div'>
                       <i class="fas fa-heart"></i>
-                      <span className='menu-badge'>0</span>
+                      <span className='menu-badge'>{wish.wishItems.length}</span>
                     </div>
                     <span>Wishlist</span>
                   </Link>
                   </li>
 
-                  <li><Link to="/cart" className='menu_link_2'>
-                    <div className='menu_div'>
-                      <i class="fas fa-shopping-bag"></i>
-                      <span className='menu-badge'>0</span>
-                    </div>
-                    <span>Cart</span>
-                  </Link>
+                  <li>
+                    <Link to="/cart" className='menu_link_2'>
+                      <div className='menu_div'>
+                        <i class="fas fa-shopping-bag"></i>
+                        {cartItemsLength ? (<span className='menu-badge'>{cartItemsLength}</span>) : (<span className='menu-badge'>0</span>)}
+                      </div>
+                      <span>Cart</span>
+                    </Link>
                   </li>
                 </>
 

@@ -1,8 +1,65 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Store } from '../Store';
+import {toast} from 'react-toastify';
+
 
 const ProductDetails = () => {
 
+    const navigate =useNavigate();
+
+    const {state, dispatch: ctxDispatch} = useContext(Store);
+    const {cart, wish} = state;
+
     const [selectImg, setSelectedImg] = useState('');
+
+    const [product, setProduct] = useState([]);
+    const [size, setSize] = useState('');
+
+    const location = useLocation();
+    const id = location.pathname.split("/")[2];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const resultProduct = await axios.get(`/api/products/${id}`);
+            console.log(resultProduct.data);
+            setProduct(resultProduct.data);
+        }
+
+        fetchData();
+    }, [id]);
+
+
+    //add to cart
+    const addToCartHandler = async () =>{
+        const existsItem = cart.cartItems.find((x) => x._id === product._id);
+        const quantity = existsItem ? existsItem.quantity + 1 : 1;
+
+        ctxDispatch({
+            type: 'ADD_TO_CART',
+            payload: {...product, quantity, size},
+        });
+        toast.success('them vao gio hang thanh cong');
+        navigate('/cart')  
+    }
+    //add to wish
+    const addToWishHandler = async () =>{
+        const existsItem = wish.wishItems.find((x) => x._id === product._id);
+        const quantity = existsItem ? existsItem.quantity : 1;
+
+        if(existsItem){
+            toast.error(' da them san pham vao ds yeu thich truoc do!');
+            return;
+        }
+
+        ctxDispatch({
+            type: 'ADD_TO_WISH',
+            payload: {...product, quantity},
+        });
+        toast.success('them DS yeu thich thanh cong');
+        navigate('/wish')  
+    }
 
 
     return (
@@ -11,11 +68,11 @@ const ProductDetails = () => {
                 <div className='pd_col'>
                     <div className='pd_imageDiv'>
                         <div className='pd_top'>
-                            <img src={selectImg || 'https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg'} className='pd_imgMain' alt="" />
+                            <img src={selectImg || product.image} className='pd_imgMain' alt={product.title} />
                         </div>
                         <div className='pd_bottom'>
-                            <img src="https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg" className='pd_imgBot' onClick={() => setSelectedImg('https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-1_34dbbc65ae334d3a841514dd26f86a41_master.jpg')} alt="" />
-                            <img src="https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-2_0198a731f25f4375b3d387d7ed3e6b4f_master.jpg" className='pd_imgBot' onClick={() => setSelectedImg('https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-2_0198a731f25f4375b3d387d7ed3e6b4f_master.jpg')} alt="" />
+                            <img src={product.image} className='pd_imgBot' onClick={() => setSelectedImg(`${product.image}`)} alt="" />
+                            <img src={product.imageOne} className='pd_imgBot' onClick={() => setSelectedImg(`${product.imageOne}`)} alt="" />
                             <img src="https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-3_452aa51f74044c7e82ac0b80bdbcf373_master.jpg" className='pd_imgBot' onClick={() => setSelectedImg('https://product.hstatic.net/200000278317/product/giay-da-banh-nike-street-gato-dc8466-437-xanh-hoang-gia-3_452aa51f74044c7e82ac0b80bdbcf373_master.jpg')} alt="" />
                         </div>
                     </div>
@@ -24,16 +81,16 @@ const ProductDetails = () => {
                     <div className='pd_groups'>
 
                         <div className='pd_group'>
-                            <h3 className='pd_title'>Product one</h3>
+                            <h3 className='pd_title'>{product.title}</h3>
                         </div>
 
                         <div className='pd_group'>
-                            <span className='pd_category'>NIKE</span>
-                            <span className='pd_subcategory'>SAN CO NHAN TAO</span>
+                            <span className='pd_category'>{product.category}</span>
+                            <span className='pd_subcategory'>{product.subcategory}</span>
                         </div>
 
                         <div className='pd_group'>
-                            <p className='pd_desc'>Đầu tháng 02/2020 vừa qua Nike đã cho ra mắt đã cho ra mắt giới mộ điệu Nike React Gato kế thừa người tiền nhiệm Nike Lunar Gato II trong phân khúc những dòng giày dành riêng cho thị trường futsal của Nike. Theo giới chuyên giày Nike React Gato là sự kế thừa cực kỳ xứng đáng nếu không muốn nói là vượt mặt cả người đàn anh Lunar Gato II trước đây.</p>
+                            <p className='pd_desc'>{product.description}</p>
                         </div>
                         <div className='pd_group'>
                             <p className='pd_quantity'>SL: <span className='pd_quantityNumber'>1</span></p>
@@ -45,47 +102,27 @@ const ProductDetails = () => {
                                 <div className='pd_size'>
                                     <h4 className='pd_sizeTitle'>Size:</h4>
                                     <div className='pd_sizeDiv'>
-
-                                        <input type="radio" id="40" name="size" value="40" />
-                                        <label htmlFor="40">40</label>
-
-                                        <input type="radio" id="41" name="size" value="41" />
-                                        <label htmlFor="41">41</label>
-
-                                        <input type="radio" id="42" name="size" value="42" />
-                                        <label htmlFor="42">42</label>
-
-                                        <input type="radio" id="43" name="size" value="43" />
-                                        <label htmlFor="43">43</label>
+                                        {
+                                            product.sizes?.map((size) => (
+                                                <>
+                                                    <input type="radio" onChange={(e) => setSize(e.target.value)} key={size._id} id={size.title} name="size" value={size.title} required/>
+                                                    <label htmlFor={size.title}>{size.title}</label>
+                                                </>
+                                            ))
+                                        }                                  
                                     </div>
                                 </div>
-                                {/* <div className='pd_color'>
-                                <h4 className='pd_sizeTitle'>Color:</h4>
-                                    <div className='pd_sizeDiv'>
-                                        <label htmlFor="40">40</label>
-                                        <input type="radio" id="40" name="size" value="40" />
-
-                                        <label htmlFor="41">41</label>
-                                        <input type="radio" id="41" name="size" value="41" />
-
-                                        <label htmlFor="42">42</label>
-                                        <input type="radio" id="42" name="size" value="42" />
-
-                                        <label htmlFor="43">43</label>
-                                        <input type="radio" id="43" name="size" value="43" />
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
 
                         <div className='pd_group'>
-                            <p className='pd_price'>Price: 400</p>
+                            <p className='pd_price'>Price: {(product.price)?.toFixed(2)}</p>
                         </div>
 
                         <div className='pd_group'>
                             <div className='pd_buttons'>
-                                <button className='pd_wish'> YEU THICH</button>
-                                <button className='pd_cart'>THEM VAO GIO HANG</button>
+                                <button className='pd_wish' onClick={addToWishHandler}> YEU THICH</button>
+                                <button className='pd_cart'  onClick={addToCartHandler}>THEM VAO GIO HANG</button>
                             </div>
                         </div>
                     </div>

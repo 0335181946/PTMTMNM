@@ -2,14 +2,12 @@ import React from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-
-
-const Price = () => {
+const Price = ({value, changePrice}) => {
 
 
   return (
     <div className='filter_buttons'>
-        <Slider range mi={1} max={1000} defaultValue={[1,1000]} marks={{1: `$1`, 1000: `$1000`}} />
+        <Slider value={value} onChange={changePrice} range min={1} max={1000}  marks={{1: `$${value[0]}`, 1000: `$${value[1]}`}} step={50} tipForrmater={value => `$${value}`} />
     </div>
   )
 }

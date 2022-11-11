@@ -1,30 +1,66 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+
+import React, { useState } from 'react'
+import ReactPaginate from 'react-paginate';
 import ShopProduct from './ShopProduct'
 
-const ShopProducts = () => {
+const ShopProducts = ({list}) => {
 
-  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const resultProduct = await axios.get('/api/products/all');
-            setProducts(resultProduct.data);
-        }
+  const [pageNumber, setPageNumber] = useState(0);
+  const blogsPerPage = 3;
+  const pagesVisited = pageNumber * blogsPerPage;
 
-        fetchData();
-    }, []);
+  const pageCount = Math.ceil(list.length / blogsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setPageNumber(selected);
+  }
 
   return (
     <div className='shopP_container'>
-        <div className='shopP_row'>
-            <ShopProduct/>
-            <ShopProduct/>
-            <ShopProduct/>
-            <ShopProduct/>
-            <ShopProduct/>
-         
-        </div>
+      <div className='shopP_row'>
+
+        {
+          list.length === 0 ? (
+            <h3 className='no_data'>NO PRODUCT</h3>
+          ) : (
+            <>
+              <div className='shopP_groups'>
+                {
+                  list.slice(pagesVisited, pagesVisited + blogsPerPage).map((product) => (
+                    <ShopProduct key={product._id} product={product} />
+                  ))
+                }
+              </div>
+
+              <ReactPaginate className='filter-pagination'
+                previousLabel={"Prev"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={3}
+                onPageChange={handlePageClick}
+                pageClassName={"pagi-item"}
+                pageLinkClassName={"pagi-link"}
+                activeClassName={"pagi-active"}
+                activeLinkClassName={"pagi-active-link"}
+                previousClassName={"pagi-item"}
+                previousLinkClassName={"pagi-link"}
+                nextClassName={"pagi-item"}
+                nextLinkClassName={"pagi-link"}
+                breakClassName={"pagi-item"}
+                breakLinkClassName={"pagi-link"}
+                disabledClassName={"disabledPagi"}
+              />
+
+            </>
+
+
+
+          )
+        }
+      </div>
     </div>
   )
 }

@@ -5,6 +5,9 @@ import seedRouter from './routes/seedRoute.js';
 import userRouter from './routes/userRoute.js';
 import blogRouter from './routes/blogRoute.js';
 import productRouter from './routes/productRoute.js';
+import categoryRouter from './routes/categoryRoute.js';
+import subcategoryRouter from './routes/subcategoryRoute.js';
+import orderRouter from './routes/orderRoute.js';
 
 const app = express();
 
@@ -16,6 +19,9 @@ app.use('/api/seed',seedRouter);
 app.use('/api/users',userRouter);
 app.use('/api/blogs',blogRouter);
 app.use('/api/products',productRouter);
+app.use('/api/category',categoryRouter);
+app.use('/api/subcategory',subcategoryRouter);
+app.use('/api/orders',orderRouter);
 
 //connect with db
 dotenv.config(); 
