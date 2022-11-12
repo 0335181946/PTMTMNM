@@ -39,14 +39,28 @@ orderRouter.get('/mine/:id', async(req,res) =>{
 });
 
 //get one order
-orderRouter.get('/:id', async(req,res) =>{
+orderRouter.get('/find/:id', async(req,res) =>{
     const order = await Order.findById(req.params.id);
     if(order){
         res.send(order);
     }else{
         res.status(404).send({message: 'order not found'});
     }
-})
+});
+
+//count sum product
+orderRouter.get('/countSumTotal', async(req,res) =>{
+    try{
+        const countSumTotal = await Order.aggregate([{$group: 
+            {_id: null,
+                total:  {$sum: '$total'}}}
+            ]);
+        res.status(200).json(countSumTotal);
+        
+    }catch(err){
+        console.log(err.message);
+    }
+});
 
 
 

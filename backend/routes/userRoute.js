@@ -74,7 +74,7 @@ userRouter.get('/all', async(req, res) =>{
 
 
 //get user by id - admin
-userRouter.get('/:id', async(req, res) =>{
+userRouter.get('/find/:id', async(req, res) =>{
     const user = await User.findById(req.params.id);
     if(user){
         res.send(user);
@@ -82,6 +82,29 @@ userRouter.get('/:id', async(req, res) =>{
         res.status(404).send({message: "user not found"});
     }
 
+});
+
+//count users
+userRouter.get('/countUsers', async(req,res) =>{
+    try{
+        const countUsers = await User.countDocuments({isAdmin: false});
+        res.status(200).json({
+            isAdmin: false, count: countUsers
+        }
+        );
+    }catch(err){
+        console.log(err.message);
+    }
+});
+
+//delete user
+userRouter.delete('/delete/:id', async(req, res)=>{
+    try{
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json('xoa user thanh cong!')
+    }catch(err){
+        console.log('xoa that bai');
+    }
 });
 
 
