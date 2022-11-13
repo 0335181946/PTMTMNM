@@ -105,8 +105,8 @@ const ProductDetails = () => {
                                         {
                                             product.sizes?.map((size) => (
                                                 <>
-                                                    <input type="radio" onChange={(e) => setSize(e.target.value)} key={size._id} id={size.title} name="size" value={size.title} required/>
-                                                    <label htmlFor={size.title}>{size.title}</label>
+                                                    <input type="radio" onChange={(e) => setSize(e.target.value)} key={size._id} id={size.value} name="size" value={size.value} required/>
+                                                    <label htmlFor={size.value}>{size.value}</label>
                                                 </>
                                             ))
                                         }                                  

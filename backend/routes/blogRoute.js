@@ -79,8 +79,7 @@ blogRouter.put('/update', async(req, res) =>{
     }else{
         res.status(401).send({message: 'blog not found'});
     }
-
-})
+});
 
 
 export default blogRouter;

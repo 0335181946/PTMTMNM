@@ -5,8 +5,6 @@ import { toast } from 'react-toastify';
 
 const AddBlogs = ({setOpenEdit}) => {
 
-
-
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
