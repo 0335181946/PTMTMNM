@@ -149,7 +149,7 @@ const data = {
     subcategory: [
         {
             checked: false,
-            label: "co nhan tao"
+            label: "san5"
         },
         {
             checked: false,
@@ -157,7 +157,7 @@ const data = {
         },
         {
             checked: false,
-            label: "san 11 nguoi"
+            label: "san11"
         },
     ]
 }

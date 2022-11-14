@@ -35,8 +35,7 @@ html{
 body{
   font-family: Roboto-Regular;
 }
-
-header, main, footer{
+ main{
   padding: 10px 15px;
 }
 

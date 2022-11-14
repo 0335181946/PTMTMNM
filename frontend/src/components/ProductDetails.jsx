@@ -81,19 +81,19 @@ const ProductDetails = () => {
                     <div className='pd_groups'>
 
                         <div className='pd_group'>
-                            <h3 className='pd_title'>{product.title}</h3>
+                            <h3 className='pd_title'>Tên: {product.title}</h3>
                         </div>
 
                         <div className='pd_group'>
-                            <span className='pd_category'>{product.category}</span>
-                            <span className='pd_subcategory'>{product.subcategory}</span>
+                            <span className='pd_category'>BRAND: {product.category}</span>
+                            <span className='pd_subcategory'> SÂN: {product.subcategory}</span>
                         </div>
 
                         <div className='pd_group'>
                             <p className='pd_desc'>{product.description}</p>
                         </div>
                         <div className='pd_group'>
-                            <p className='pd_quantity'>SL: <span className='pd_quantityNumber'>1</span></p>
+                            <p className='pd_quantity'>Số lượng kho: <span className='pd_quantityNumber'>1</span></p>
                         </div>
 
 
@@ -116,13 +116,13 @@ const ProductDetails = () => {
                         </div>
 
                         <div className='pd_group'>
-                            <p className='pd_price'>Price: {(product.price)?.toFixed(2)}</p>
+                            <p className='pd_price'>Giá: {(product.price)} vnd</p>
                         </div>
 
                         <div className='pd_group'>
                             <div className='pd_buttons'>
-                                <button className='pd_wish' onClick={addToWishHandler}> YEU THICH</button>
-                                <button className='pd_cart'  onClick={addToCartHandler}>THEM VAO GIO HANG</button>
+                                <button className='pd_wish' onClick={addToWishHandler}>THÊM VÀO YÊU THÍCH</button>
+                                <button className='pd_cart'  onClick={addToCartHandler}>THÊM VÀO GIỎ HÀNG</button>
                             </div>
                         </div>
                     </div>

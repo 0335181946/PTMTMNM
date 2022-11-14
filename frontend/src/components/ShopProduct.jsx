@@ -10,10 +10,11 @@ const ShopProduct = ({product}) => {
                 </div>
                 <div className='product_footer'>
                     <div className='product_divTop'>
-                        <span className='product_category'>{product.category}</span>
-                        <h3 className='product_title'>{product.title}</h3>
+                        <span className='product_category'>brand: {product.category}</span>
+                        <span className='product_subcategory'>sân: {product.subcategory}</span>
+                        <h3 className='product_title'>name: {product.title}</h3>
                         <div>
-                            <span className='product_price'>{(product.price)?.toFixed(2)}</span>
+                            <span className='product_price'>Giá: {(product.price)} vnd</span>
                         </div>
 
                     </div>

@@ -23,6 +23,7 @@ const HomeBlog = () => {
             <div className="hb_row">
                 <div className="hb_col">
                     <div className='hb_div'>
+                      
                         {
                             blogs.length === 0 ? (
                                 <h3 className='no_data'>NO BLOG</h3>

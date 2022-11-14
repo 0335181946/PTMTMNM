@@ -2,8 +2,8 @@ import React from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HomeBlog from '../components/HomeBlog'
-import Intro from '../components/Intro'
 import NewProducts from '../components/NewProducts'
+import Slides from '../components/Slides'
 
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
             <Header/>
         </header>
         <main className='main'>
-            <Intro/>
+            <Slides/>
             <HomeBlog/>
             <NewProducts/>
         </main>

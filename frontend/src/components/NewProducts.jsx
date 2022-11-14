@@ -27,7 +27,7 @@ const NewProducts = () => {
                     ) : (
                         <div className='productS_groups'>
                             {
-                                products.slice(-4).map((product) => (
+                                products.slice(-8).map((product) => (
                                     <NewProduct key={product._id} product={product} />
                                 ))
                             }

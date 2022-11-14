@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 const CartItem = ({item, removeItemHandler, updateCartHandler}) => {
     return (
-        <div className='product_group'>
+        <div className='product_group cart_pro'>
             <Link to={`/products/${item._id}`}>
                 <div className='product_body'>
                     <img className='product_img' src={item.image} alt={item.title} />
                 </div>
                 <div className='product_footer'>
                     <div className='product_divTop'>
-                        <span className='product_category'>{item.category}</span>
-                        <h3 className='product_title'>{item.title}</h3>
+                        <span className='product_category'>brand: {item.category}</span>
+                        <h3 className='product_title'>name: {item.title}</h3>
                         <span className='product_size'>Size: {item.size}</span>
-                        <span className='product_price'>${(item.price)?.toFixed(3)}</span>
+                        <span className='product_price'>Giá: {(item.price)} vnd</span>
                     </div>
                 </div>
             </Link>

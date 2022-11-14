@@ -25,7 +25,7 @@ const TopBar = () => {
                 <h2 className='home_logo'>Admin</h2>
             </div>
             <div className='home_tcol'>
-                <span onClick={logoutHandler} className='home_logout'>Logout</span>
+                <span onClick={logoutHandler} className='home_logout'>Logout  <i class="fas fa-sign-out-alt"></i> </span>
             </div>
         </>
     )

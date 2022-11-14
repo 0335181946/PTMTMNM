@@ -11,6 +11,8 @@ const ViewUser = ({user, setOpenViewUser}) => {
           <div className='popup_group view'>
                   <label htmlFor="title">Email:</label>
                   <p className='description'> {user.email}</p>
+                  <label htmlFor="title">Name:</label>
+                  <p className='description'> {user.username}</p>
           </div>
         </div>
       </div>

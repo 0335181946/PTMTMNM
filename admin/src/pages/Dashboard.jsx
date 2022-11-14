@@ -15,6 +15,7 @@ const Dashboard = () => {
 
             const resultUsers = await axios.get('/api/users/countUsers');
             setUsers(resultUsers.data);
+            console.log(resultUsers)
 
             const resultBlogs = await axios.get('/api/blogs/countBlogs');
             setBlogs(resultBlogs.data);

@@ -33,7 +33,7 @@ const CartItems = () => {
     return (
         <div className='cart_container'>
             <div className='wish_row'>
-                <h2 className='wish_title'>GIO HANG CUA BAN</h2>
+                <h2 className='wish_title3'>GIỎ HÀNG</h2>
             </div>
             <div className='cart_row'>
                 <div className='cart_col'>
@@ -54,17 +54,19 @@ const CartItems = () => {
                 </div>
                 <div className='cart_col'>
                     <div className='cart_bill'>
-                        <h2 className='bill_title'>My bill</h2>
+                        <h2 className='bill_title'>TẠM TÍNH</h2>
                             {
                                 cartItems.length === 0 ? (
                                     <h3 className='cart_no_product'>EMPTY!</h3>
                                 ) : (
                                     <div className=''>
+                                        
                                         {
                                             cartItems.map((item) => (
                                                 <div className='bill_group' key={item._id}>
+                 
                                                     <span>{item.title}</span>
-                                                    <span>${item.price}</span>
+                                                    <span>{item.price} vnd</span>
                                                 </div>
                                             ))
                                         }
@@ -73,16 +75,16 @@ const CartItems = () => {
                             }
                         <div className='bill_total'>
                             <div className='bill_group'>
-                                <span>Subtotal</span>
-                                <span>${subTotal}</span>
+                                <span>Tổng tiền sản phẩm</span>
+                                <span>{subTotal} vnd</span>
                             </div>
                             <div className='bill_group'>
                                 <span>COD</span>
-                                <span>${cod}</span>
+                                <span>{cod} vnd</span>
                             </div>
                             <div className='bill_group'>
-                                <span>TOTAL</span>
-                                <span>${total}</span>
+                                <span>Tổng tiền thanh toán</span>
+                                <span>{total} vnd</span>
                             </div>
                         </div>
                         <div className='bill_btn'>

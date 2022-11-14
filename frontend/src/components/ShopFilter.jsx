@@ -7,15 +7,15 @@ const ShopFilter = ({filterResult, category, subCategory, changeChecked, selecte
     return (
         <>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>category</span>
+                <span className='filter_groupTitle'>THƯƠNG HIỆU</span>
                 <Category filterResult={filterResult} category={category}/>
             </div>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>subCategory</span>
+                <span className='filter_groupTitle'>SÂN</span>
                 <Subcategory subCategory={subCategory} changeChecked={changeChecked}/>
             </div>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>Price</span>
+                <span className='filter_groupTitle'>GIÁ</span>
                 <Price value={selectedPrice} changePrice={changePrice}/>
             </div>
 

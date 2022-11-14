@@ -27,13 +27,15 @@ const Header = () => {
       <div className="h_row">
         <div className="h_col">
           <div className='h_logo'>
-            <Link to="/" className='logo'>TQT_FUTSAL.</Link>
+            <Link to="/" className='logo'><img src="https://bcassetcdn.com/social/53qwh2v4q7/preview.png" alt="" /></Link>
           </div>
           <div className='h_menu'>
             <ul className='menu_item'>
               <li><Link to="/" className='menu_link'>HOME</Link></li>
-              <li><Link to="/shop" className='menu_link'>SHOP</Link></li>
-              <li><Link to="/blogs" className='menu_link'>BLOG</Link></li>
+              <li><Link to="/shop" className='menu_link'>PRODUCT</Link></li>
+              <li><Link to="/blogs" className='menu_link'>NEWS</Link></li>
+              <li><Link to="/" className='menu_link'>ORDERS</Link></li>
+              <li><Link to="/" className='menu_link'>ABOUT</Link></li>
               {userInfo && (
                 <li><Link to="/account" className='menu_link'>ACCOUNT</Link></li>
               )}
@@ -42,7 +44,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="h_col">
+        <div className="h_col ">
           <div className="h_anotherMenu">
             <ul className='menu_item_2'>
               {userInfo ? (

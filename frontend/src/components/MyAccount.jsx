@@ -9,7 +9,7 @@ const MyAccount = () => {
     return (
         <div className='my_container'>
             <div className='my_row'>
-                <h2 className='shop_title'>ACCOUNT</h2>
+                <h2 className='shop_title1'>ACCOUNT</h2>
             </div>
             <div className='my_row'>
                 <Tabs>

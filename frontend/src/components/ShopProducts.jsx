@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate';
 import ShopProduct from './ShopProduct'
 
-const ShopProducts = ({list}) => {
+const ShopProducts = ({ list }) => {
 
 
   const [pageNumber, setPageNumber] = useState(0);
-  const blogsPerPage = 3;
+  const blogsPerPage = 8;
   const pagesVisited = pageNumber * blogsPerPage;
 
   const pageCount = Math.ceil(list.length / blogsPerPage);
@@ -53,11 +53,7 @@ const ShopProducts = ({list}) => {
                 breakLinkClassName={"pagi-link"}
                 disabledClassName={"disabledPagi"}
               />
-
             </>
-
-
-
           )
         }
       </div>

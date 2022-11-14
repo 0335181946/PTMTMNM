@@ -54,7 +54,7 @@ const ChangePassword = () => {
 
   return (
     <div className='sign_container changeP_container'>
-      <div className='sign_row'>
+      <div className='sign_row3'>
         <div className='sign_form'>
 
           <form onSubmit={updateHandler}>
