@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -41,7 +40,7 @@ const Footer = () => {
       <div className='footer_col'>
         <h2>CHÍNH SÁCH - HỖ TRỢ KHÁCH HÀNG</h2>
         <ul className='footer_hotro'>
-          <li>Cam kết từ NEYMARSPORT</li>
+          <li>Cam kết từ SPORT</li>
           <li>Hướng dẫn chọn size</li>
           <li>Hướng dẫn mua hàng</li>
           <li>Hướng dẫn đặt hàng online</li>
@@ -49,7 +48,7 @@ const Footer = () => {
           <li>Chính sách bảo hành</li>
           <li>Chính sách vận chuyển</li>
           <li>Ưu đãi quà tặng</li>
-          <li>NEYMARSPORT MEMBERSHIP</li>
+          <li>SPORT MEMBERSHIP</li>
           <li>Chính sách bảo mật</li>
           <li>Hệ thống cửa hàng</li>
           <li>Tin tức giày</li>
@@ -59,7 +58,7 @@ const Footer = () => {
 
       <div className='footer_copyRight'>
         <div className='info'>
-          <span>Công ty TNHH NEYMARSPORT</span>
+          <span>Công ty TNHH SPORT</span>
           <span>Mã số Doanh Nghiệp : 0316234396</span>
           <span>Ngày cấp : 21/04/2020, Nơi cấp : Sở kế hoạch và đầu tư TP.HCM</span>
           <span>Địa chỉ văn phòng: 43A Điện Biên Phủ, Phường 15, Q. Bình Thạnh</span>
@@ -71,7 +70,7 @@ const Footer = () => {
           <a href="https://www.dmca.com/Protection/Status.aspx?ID=62e499e6-2ff1-4bce-9788-30e74f9e99ff&cdnrdr=1&refurl=https://neymarsport.com/">
             <img src="https://images.dmca.com/Badges/dmca-badge-w150-2x1-02.png?ID=62e499e6-2ff1-4bce-9788-30e74f9e99ff" alt="" />
           </a>
-          <span>© Bản quyền thuộc về NEYMARSPORT</span>
+          <span>© Bản quyền thuộc về SPORT</span>
         </div>
 
       </div>

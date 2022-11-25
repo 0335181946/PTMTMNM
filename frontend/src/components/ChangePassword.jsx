@@ -53,12 +53,12 @@ const ChangePassword = () => {
   }
 
   return (
-    <div className='sign_container changeP_container'>
+    <div className='sign_container changeP_containe3'>
       <div className='sign_row3'>
         <div className='sign_form'>
 
           <form onSubmit={updateHandler}>
-            <h2 className='sign_title'>THAY DOI MAT KHAU</h2>
+            <h2 className='sign_title'>ĐỔI MẬT KHẨU</h2>
 
             <div className='sign_form1'>
               <label htmlFor="o_password" className='sign_label'>Old Password</label>

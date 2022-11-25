@@ -92,11 +92,11 @@ const ShopMain = () => {
     return (
         <div className='shop_container'>
             <div className='shop_row'>
-                <h2 className='shop_title'>SHOP</h2>
+                <h2 className='shop_title'>SẢN PHẨM</h2>
             </div>
             <div className='shop_row'>
                 <div className='shop_col'>
-                    <h4 className='shop_filter'>filters</h4>
+                    <h4 className='shop_filter'> LỌC SẢN PHẨM</h4>
 
                     <div className='shop_search'>
                         <span className='search_groupTitle'>Search</span>

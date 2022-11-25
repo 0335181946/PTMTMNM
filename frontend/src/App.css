@@ -287,35 +287,85 @@
 
 .wish_groups,
 .productS_groups {
+    width: 84%;
+    margin: 0px auto;
     display: flex;
+    padding: 30px;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 60px;
-    margin: 0 auto;
-    width: 80%;
+    justify-content: space-between;
 }
+
+.cart_groups{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 
 .product_group {
-    width: 17%;
+    flex: 1;
+    margin: 20px;
+    min-width: 300px;
+    max-width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#FFE4B5;
+    position: relative;
 }
 
-.product_group a{
-    width: 10%;
+.item_cart_groups{
+    margin: 10px auto;
+    width: 50%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#DFCB61;
+    position: relative;
 }
 
-.product_body {
-    height: fit-content;
+.item_cart_groups a{
+   height: 100%;
+   width: 100%;
 }
 
 .product_img {
-    width: 100%;
+    width: 90%;
+    height: 90%;
+    z-index: 2;
 }
 
-.product_footer {
-    position: relative;
-    height: 100px;
-    background-color: silver;
+.product_body {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: absolute;
+    background-color: #FFFAF0;
 }
+
+.product_body span, .product_body button, .product_body h4{
+    margin-left: 50px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+.product_group:hover .product_body{
+    opacity: 1;
+ }
 
 .product_divTop {
     display: flex;
@@ -333,15 +383,11 @@
 }
 
 .product_category {
-    font-weight: bold;
-    font-size: 18px;
-    text-align: center;
     margin-top: 10px;
     text-transform: uppercase;
 }
 
 .product_subcategory {
-    font-size: 16px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -350,13 +396,28 @@
 }
 
 .product_title{
-    font-weight: 300;
+    text-transform: uppercase;
 }
 
 .product_price{
     font-size: 16px;
 }
 
+.icon_view{
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: black;
+}
+
+.icon_view a{
+    color: #FFE4B5;
+}
+
+.icon_view:hover, .icon_view a:hover{
+    background-color: #FFE4B5;
+    color: black;
+}
 
 
 .footer_container {
@@ -492,9 +553,18 @@
 }
 
 .sign_form {
-    width: 500px;
+    margin-top: 80px;
+    width: 450px;
     border: 1px solid black;
     padding: 10px;
+    background-color: 	#FFFAF0;
+}
+
+.sign_form2 {
+    width: 450px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color:	#FFFAF0;
 }
 
 .sign_title {
@@ -518,58 +588,69 @@
 }
 
 .sign_btn_login {
-    padding: 10px 15px;
+    padding: 15px 15px;
     display: block;
     margin: 0 auto;
     text-transform: uppercase;
     transition: all 0.5s;
     background-color: black;
-    box-shadow: 0 0 4px #00000060;
-    color: white;
+    color: #F1DC68;
     border: none;
-    letter-spacing: 2px;
+    font-size: 14px;
+    width: 200px;
+    font-weight: bold;
 }
 
 .sign_btn_login:hover {
-    background-color: white;
+    background-color: #F1DC68;
     color: black;
 }
+
 
 .signOther {
     margin: 10px 0;
     text-align: center;
+    background-color: #000000;
+    border: none;
+    width: 200px;
+    margin: 15px auto;
+    padding: 15px 15px;
+}
+
+.signOther1{
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.signOther1 a{
+    font-size: 14px;
+    cursor: default;
+    color: black;
 }
 
 .signOther a {
     font-size: 14px;
-    color: black;
+    color: #F1DC68;
     position: relative;
+    font-weight: bold;
 }
 
-.signOther a::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1.5px;
-    bottom: 0;
-    right: 0;
-    background-color: black;
-    transform-origin: bottom right;
-    transition: transform 0.5s cubic-bezier(0, 0, 0.44, 1.1);
+.signOther:hover, .signOther a:hover{
+    background-color: #F1DC68;
+    color: black;
 }
 
-.signOther a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
 
 
 /*shop*/
 .wish_container,
 .shop_container {
+    width: 90%;
+    margin: 0px auto;
     padding: 30px 0px;
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
 }
 
 .wish_title3{
@@ -591,60 +672,70 @@
 }
 
 .shop_col:first-child {
+    margin-top: 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    padding: 30px;
+    background-color:#DCDCDC
 }
 
 .shop_col:last-child {
     flex: 3;
 }
 .shop_filter{
-    margin-left: 100px;
     text-transform: uppercase;
     margin-bottom: 30px;
-    color: red;
+    color: teal;
     font-size: 20px;
 }
 .shop_search{
     width: 70%;
-    margin-left: 100px;
 }
 
 .shop_filterGroup{
     width: 70%;
-    margin-left: 100px;
 }
 
 .filter_group {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .filter_groupTitle {
-    font-size: 14px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
 }
 
 .shopP_container{
-    margin: 0px 100px;
+    margin-left: 50px;
 }
 
 /*filter*/
 .filter_div {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .filter_buttons {
+    margin: 0px auto;
+    width: 150px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
+
+.filter_buttons2 {
+    margin-top: 20px;
+}
+
 
 .filter_btn {
     background-color: black;
     color: #DFCB61;
     border: none;
-    padding: 5px 15px;
+    padding: 10px 15px;
     text-transform: uppercase;
     transition: all 0.5s;
 }
@@ -659,7 +750,7 @@
     outline: none;
     border: none;
     border-bottom: 1px solid black;
-    width: 80%;
+    width: 100%;
     padding: 0 10px 5px 10px;
 }
 
@@ -703,7 +794,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
 }
 
 .pd_title{
@@ -719,10 +810,38 @@
     width: 100%;
 }
 
+.wish_button2 {  
+    border: none;
+    padding: 10px 0px;
+    width: max-content;
+}
+
+.wish_span2{
+    margin-left: 0px !important;
+    padding: 15px;
+}
+
+.wish_button2:hover{
+    background-color: #000000;
+    color:white
+}
+
+
 .cart_button {
     background: transparent;
     border: none;
-    padding: 10px 0px;
+    width: 100%;
+    height: 50%;
+    border-top: 1px solid #DFCB61;
+    font-weight: bold;
+}
+.cart_button:hover, .cart_span:hover{
+    background-color: silver;
+    color: white;
+}
+
+.cart_span {
+    color: black;
 }
 
 .wish_span {
@@ -733,7 +852,9 @@
     border: 1px solid black;
 }
 .cart_container{
-    height: 80vh;
+    min-height: 100vh;
+    height: max-content;
+    margin-bottom: 20px;
 }
 
 .cart_row {
@@ -742,17 +863,30 @@
 }
 
 .cart_col:first-child {
-    flex: 3;
+    flex: 2;
 }
 
 .cart_col:last-child {
     flex: 1;
-    margin-right: 100px;
+}
+.cart_bill{
+    width: 70%;
+    border: 1px solid #dfcb61;
+    padding: 15px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.95)
+    ),
+    url("https://png.pngtree.com/png-clipart/20190516/original/pngtree-paypal-logo-icon-png-image_3593258.jpg")
+      center;
 }
 
+
 .cart_otherDiv {
-    border-top: 1px solid black;
+    width: 20%;
+    height: 50%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     background-color: silver;
@@ -790,12 +924,17 @@
 .bill_group {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-top: 10px;
     border-bottom: 1px dashed #00000023;
 }
 
+.bill_total_title{
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .bill_total {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .bill_btn {
@@ -823,8 +962,16 @@
 .my_container {
     padding: 20px 0;
 }
+
+
 .sign_container{
-    height: 70vh;
+    height: 100vh;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url("https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blta4cc57a03fc061a8/60dd2baac5c41538a1593e7f/c76602c9c98c4ceb97214c531f7e9a60db88dd54.png")
+      center;
 }
 
 .shop_title1{
@@ -836,10 +983,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
 }
-
-
 
 .sign_container.changeP_container {
     margin-top: 30px;
@@ -859,17 +1003,20 @@
 
 .mo_group {
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed black;
-    margin-bottom: 30px;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
 }
 
 .mo_link {
-    color: greenyellow;
+    color: teal;
 }
 
 .mo_link:hover {
     color: red;
+}
+
+.myOrder_groups{
+    margin-top: 70px;
 }
 
 .am_row:last-child {
@@ -1215,4 +1362,51 @@
 
 .mf{
     margin-top: 30px;
+}
+
+
+.cart_total{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart_total .product_img{
+   width: 160px;
+   height: 100%;
+}
+
+.info_item_cart{
+    margin-left: 15px; 
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    color: black;
+    font-weight: bold;
+}
+
+.info_item_cart span, .info_item_cart h3{
+    margin-top: 10px;
+    font-size: 16px;
+} 
+
+.bill_info_details{
+    padding: 5px;
+}
+
+.bill_info_details .bill_group{
+    margin-top: 15px;
+}
+
+.bill_info_title{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mo_container{
+    min-height: 70vh;
+    height: max-content;
 }

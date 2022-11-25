@@ -24,7 +24,8 @@ app.use('/api/subcategory',subcategoryRouter);
 app.use('/api/orders',orderRouter);
 
 //connect with db
-dotenv.config(); 
+dotenv.config();
+
 mongoose.connect(process.env.MONGODB_URI).then(() =>{
     console.log("conntect to DB!");
 }).catch((error) =>{

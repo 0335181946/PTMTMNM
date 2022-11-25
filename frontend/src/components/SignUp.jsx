@@ -44,10 +44,10 @@ const SignUp = () => {
   return (
     <div className='sign_container'>
       <div className='sign_row'>
-        <div className='sign_form'>
+        <div className='sign_form2'>
 
           <form onSubmit={registerHandler}>
-            <h2 className='sign_title'>DANG KI TAI KHOAN</h2>
+            <h2 className='sign_title'>ĐĂNG KÝ TÀI KHOẢN</h2>
             <div className='sign_form1'>
               <label htmlFor="username" className='sign_label'>Username</label>
               <input type="text" onChange={(e) => setUsername(e.target.value)} id="username" className='sign_input' required />
@@ -65,11 +65,18 @@ const SignUp = () => {
               <input type="password" onChange={(e) => setRPassword(e.target.value)} id="r_password" className='sign_input' required />
             </div>
             <div className='sign_btn'>
-              <button className='sign_btn_login'>REGISTER</button>
+              <button className='sign_btn_login'>ĐỒNG Ý ĐĂNG KÝ</button>
+            </div>
+
+            <div className='signOther1'>
+              <Link to="">- - HOẶC CHỌN - -</Link>
             </div>
 
             <div className='signOther'>
-              <Link to="/login">DANG NHAP</Link>
+              <Link to="/login">ĐĂNG NHẬP</Link>
+            </div>
+            <div className='signOther'>
+              <Link to="/">TRỞ LẠI TRANG CHỦ</Link>
             </div>
 
           </form>

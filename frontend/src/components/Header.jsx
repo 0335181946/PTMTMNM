@@ -34,10 +34,13 @@ const Header = () => {
               <li><Link to="/" className='menu_link'>HOME</Link></li>
               <li><Link to="/shop" className='menu_link'>PRODUCT</Link></li>
               <li><Link to="/blogs" className='menu_link'>NEWS</Link></li>
-              <li><Link to="/" className='menu_link'>ORDERS</Link></li>
               <li><Link to="/" className='menu_link'>ABOUT</Link></li>
+              
               {userInfo && (
-                <li><Link to="/account" className='menu_link'>ACCOUNT</Link></li>
+               <li><Link to="/orders" className='menu_link'>ORDERS</Link></li>
+              )}
+              {userInfo && (
+                <li><Link to="/account" className='menu_link'>ĐỔI MẬT KHẨU</Link></li>
               )}
 
             </ul>

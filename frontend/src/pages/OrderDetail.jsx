@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer'
-import MyOrders from '../components/MyOrders';
+import MyOrder from '../components/MyOrder';
 
 const OrderDetail = () => {
   return (
@@ -10,7 +10,7 @@ const OrderDetail = () => {
             <Header/>
         </header>
         <main className='main'>
-            <MyOrders/>
+            <MyOrder/>
         </main>
         <footer className='footer'>
             <Footer/>

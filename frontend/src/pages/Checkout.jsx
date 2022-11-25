@@ -15,7 +15,7 @@ const Checkout = ({setOpen,cartItems, subTotal, cod, total}) => {
   const [phone, setPhone] = useState('');
 
   const orderProductHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault();  // ngan form khong gui di
     try{
       const {data} = await axios.post('/api/orders/',{
         orderItems: cartItems,
@@ -34,7 +34,7 @@ const Checkout = ({setOpen,cartItems, subTotal, cod, total}) => {
         localStorage.removeItem('cartItems');
         setOpen(false);
         toast.success('ban dat hang thanh cong');
-        navigate('/account');
+        navigate('/orders');
       }
 
     }catch(err){

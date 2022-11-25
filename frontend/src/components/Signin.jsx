@@ -43,7 +43,7 @@ const Signin = () => {
         <div className='sign_form'>
 
           <form onSubmit={loginHandler}>
-            <h2 className='sign_title'>DANG NHAP</h2>
+            <h2 className='sign_title'>ĐĂNG NHẬP</h2>
             <div className='sign_form1'>
               <label htmlFor="email" className='sign_label'>Email</label>
               <input type="email" onChange={(e) => setEmail(e.target.value)} id="email" className='sign_input' required />
@@ -53,11 +53,18 @@ const Signin = () => {
               <input type="password" onChange={(e) => setPassword(e.target.value)} id="password" className='sign_input' required />
             </div>
             <div className='sign_btn'>
-              <button className='sign_btn_login'>Login</button>
+              <button className='sign_btn_login'>ĐĂNG NHẬP</button>
+            </div>
+
+            <div className='signOther1'>
+              <Link to="">- - HOẶC CHỌN - -</Link>
             </div>
 
             <div className='signOther'>
-              <Link to="/register">DANG KI TAI KHOAN</Link>
+              <Link to="/register">ĐĂNG KÝ TÀI KHOẢN</Link>
+            </div>
+            <div className='signOther'>
+              <Link to="/">TRỞ LẠI TRANG CHỦ</Link>
             </div>
 
           </form>

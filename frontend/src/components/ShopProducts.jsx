@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate';
 import ShopProduct from './ShopProduct'
@@ -7,7 +6,7 @@ const ShopProducts = ({ list }) => {
 
 
   const [pageNumber, setPageNumber] = useState(0);
-  const blogsPerPage = 8;
+  const blogsPerPage = 9;
   const pagesVisited = pageNumber * blogsPerPage;
 
   const pageCount = Math.ceil(list.length / blogsPerPage);

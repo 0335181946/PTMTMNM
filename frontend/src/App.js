@@ -14,6 +14,7 @@ import Product from "./pages/Product.jsx";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Order from "./pages/Order.jsx";
+import OrderDetail from "./pages/OrderDetail.jsx";
 
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
             <Route path="/blogs" element={<Blog/>}/>
             <Route path="/blogs/:id" element={<BlogItem/>}/>
             <Route path="/products/:id" element={<Product/>}/>
-            <Route path="/orders/:id" element={<Order/>}/>
+            <Route path="/orders/" element={<Order/>}/>
+            <Route path="/orders/:id" element={<OrderDetail/>}/>
         </Routes>
     </Router>
    </>

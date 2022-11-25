@@ -11,11 +11,11 @@ const ShopFilter = ({filterResult, category, subCategory, changeChecked, selecte
                 <Category filterResult={filterResult} category={category}/>
             </div>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>SÂN</span>
+                <span className='filter_groupTitle'>LOẠI SÂN</span>
                 <Subcategory subCategory={subCategory} changeChecked={changeChecked}/>
             </div>
             <div className='filter_group'>
-                <span className='filter_groupTitle'>GIÁ</span>
+                <span className='filter_groupTitle'>KHOẢNG GIÁ</span>
                 <Price value={selectedPrice} changePrice={changePrice}/>
             </div>
 

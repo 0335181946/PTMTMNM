@@ -21,7 +21,7 @@ const MyOrders = () => {
     return (
         <div className='mo_container'>
             <div className='mo_row'>
-                <h2 className='sign_title'>MY ORDERS</h2>
+                <h2 className='sign_title'>LỊCH SỬ ĐƠN HÀNG CỦA BẠN</h2>
             </div>
             <div className='mo_row'>
                 {

@@ -1,28 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const WishListItem = ({item, removeItemHandler}) => {
+const WishListItem = ({ item, removeItemHandler }) => {
 
     return (
         <div className='product_group wish_pro'>
-            <Link to={`/products/${item._id}`}>
-                <div className='product_body'>
-                    <img className='product_img' src={item.image} alt={item.title} />
-                </div>
-                <div className='product_footer'>
-                    <div className='product_divTop'>
-                        <span className='product_category'>BRAND: {item.category}</span>
-                        <span className='product_subcategory'>SAN: {item.subcategory}</span>
-                        <h3 className='product_title'>name: {item.title}</h3>
-                        <span className='product_price'>Gia: {(item.price)} vnd</span>
-                    </div>
-                    
-                </div>
-            </Link>
-            <button className='wish_button' onClick={() => removeItemHandler(item)}>
-                <span className='wish_span'>DELETE</span>
-            </button>
+            <img className='product_img' src={item.image} alt={item.title} />
+            <div className='product_body'>
+
+                <span className='product_category'>hãng: {item.category}</span>
+                <span className='product_subcategory'>sân: {item.subcategory}</span>
+                <h4 className='product_title'>TÊN: {item.title}</h4>
+                <span className='product_price'>GIÁ:  {(item.price)}đ</span>
+                <button className='icon_view'>
+                    <Link to={`/products/${item._id}`}>
+                        XEM CHI TIẾT
+                    </Link>
+                </button>
+                <button className='wish_button2' onClick={() => removeItemHandler(item)}>
+                    <span className='wish_span2'>DELETE</span>
+                </button>
+            </div>
         </div>
+
     )
 }
 
